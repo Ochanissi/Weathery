@@ -4,9 +4,12 @@
   "description": "Weathery Project",
   "main": "index.js",
   "scripts": {
+    "watch:sass": "node-sass sass/main.scss css/style.css -w",
+    "devserver": "live-server --browser=chrome",
+    "live-start": "npm-run-all --parallel devserver watch:sass",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development --open"
+    "start": "webpack-dev-server --mode development"
   },
   "author": "Mirel Bitoi",
   "license": "ISC",
@@ -29,6 +32,7 @@
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.41.0",
