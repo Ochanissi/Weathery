@@ -1,12 +1,4 @@
-$color: blue;
-
-.container {
-    color: $color;
-    background-image: linear-gradient(
-        to right bottom, 
-        rgba($color, 0.8),
-        rgba($color, 0.8)), 
-    url(https://images.unsplash.com/photo-1511283878565-0833bf39de9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80);
-    background-size: cover;
-    background-position: top;
-}
+@import "base";
+@import "typography";
+@import "header";
+@import "footer";
