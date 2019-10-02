@@ -1,0 +1,22 @@
+.header {
+    // background-color: red;
+
+    grid-row: 1 / 2;
+    grid-column: full-start / full-end;
+
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-gap: 1rem;
+
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-grey-dark-2, .5),
+        rgba($color-grey-dark-3, .5)), 
+    url(/img/header-background.jpg);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+}
