@@ -22,8 +22,8 @@ $color-white: #fff;
 $color-black: #000;
 
 // FONT VARIABLES
-$font-primary: 'Source Sans Pro', sans-serif;
-$font-display: 'Source Sans Pro', sans-serif;
+$font-primary: 'Montserrat', sans-serif;
+$font-display: 'Montserrat', sans-serif;
 
 // RESPONSIVE BREAKPOINTS
 $bp-largest: 81.25em; // 1300px
@@ -67,7 +67,13 @@ body {
 .container {
     display: grid;
     grid-template-rows: 100vh min-content;
-    grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end] ) [center-end] minmax(6rem, 1fr) [full-end];
+    grid-template-columns: [full-start] minmax(max-content, 14rem) [center-start]
+    repeat(2, minmax(6rem, 1fr))
+    repeat(8, [col-start] minmax(max-content, 14rem) [col-end])
+    repeat(2, minmax(6rem, 1fr))
+    [center-end] minmax(max-content, 14rem) [full-end];
+
+
 
     & > * {
         // padding: 40px;
