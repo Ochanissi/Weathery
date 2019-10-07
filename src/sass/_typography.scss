@@ -82,7 +82,7 @@
 .btn,
 .btn:link,
 .btn:visited {
-    padding: 1.5rem 2rem;
+    padding: 0 2rem;
     border: 2px solid $color-white;
     color: $color-grey-light-1;
     font-family: $font-display;
@@ -93,13 +93,7 @@
     letter-spacing: .4rem;
     cursor: pointer;
     transition: all .5s ease-in-out;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    align-items: center;
-
+    height: 3.5rem;
 
     
     &:hover {
