@@ -1,17 +1,40 @@
-import axios from 'axios';
+import Search from './models/Search';
+import * as searchView from './views/searchView';
+import { elements } from './views/base';
 
-async function getResults(query) {
-    const proxy = 'https://cors-anywhere.herokuapp.com/';
-    const key = '985bae1e1ba4fca94db72ba79093602d';
-    try {
-        const res = await axios(`${proxy}https://api.darksky.net/forecast/${key}/${query},-71.0589`);
-        const temps = res.data.currently;
-        console.log(res);
-        console.log(temps);
-    } catch(error) {
-        alert(error);
+// Global state of the app
+// - Search object
+// - Current recipe object
+// - Liked recipes
+const state = {};
+
+const controlSearch = async () => {
+    // 1. Get the query from the view
+    // const query_lat = '42.3601'; // TODO 
+    // const query_long = '-71.0589'; // TODO 
+    const query_lat = searchView.getInput();
+
+    if (query_lat && query_long) {
+        // 2. New search object and add to state
+        state.search = new Search(query_lat, query_long);
+
+        // 3. Prepare UI for results
+        searchView.clearInput();
+        searchView.clearResults();
+
+        // 4. Search for recipes
+        await state.search.getResults();
+
+        // 5. Render results on UI
+        // console.log(state.search.result);
+        searchView.renderResults(state.search.result);
     }
 }
 
-getResults(42.3601);
+elements.searchForm.addEventListener('submit', e => {
+    e.preventDefault();
+    controlSearch();
+});
 
+
+// const search = new Search('42.3601', '-71.0589');
