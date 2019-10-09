@@ -224,6 +224,25 @@
     }
 }
 
+.loader {
+    margin: 5rem auto;
+    text-align: center; }
+    .loader svg {
+      height: 5.5rem;
+      width: 5.5rem;
+      fill: $color-white;
+      transform-origin: 44% 50%;
+      animation: rotate 1.5s infinite linear; }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0); }
+    100% {
+      transform: rotate(360deg); }   
+}
+
+
+
 .mb-sm {
     margin-bottom: 2rem;
 }
