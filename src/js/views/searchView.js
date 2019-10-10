@@ -12,6 +12,12 @@ export const clearResults = () => {
     elements.searchResList.innerHTML ='';
     elements.searchResPages.innerHTML ='';
     elements.searchResLeft.innerHTML = '';
+    elements.searchResRight.innerHTML = '';
+};
+
+export const clearResList = () => {
+    elements.searchResList.innerHTML ='';
+    elements.searchResPages.innerHTML ='';
 };
 
 const getIcons = (data) => {
@@ -61,10 +67,10 @@ const getIcons = (data) => {
 };
 
 
-const renderCurrently = currently => {
+export const renderCurrently = currently => {
     getIcons(currently);
 
-    const markup = `
+    const markupLeft = `
         <div class="header__left--icon"><i class="wi ${currently.icon}"></i></div>
         <div class="header__left--summary">${currently.summary}</div>
         <div class="header__left--city">City Name</div>
@@ -75,7 +81,39 @@ const renderCurrently = currently => {
             </button>
         </div>
     `;
-    elements.searchResLeft.insertAdjacentHTML('afterbegin', markup);
+    elements.searchResLeft.insertAdjacentHTML('afterbegin', markupLeft);
+
+    const markupRight = `
+        <div class="header__right--block">
+            <span class="header__right--icon"><i class="wi wi-humidity"></i></span>
+            <div class="header__right--content">
+                    <span class="header__right--content--title">Humidity</span>
+                    <span class="header__right--content--text">${Math.round(currently.humidity * 100)} %</span>
+            </div>
+        </div>
+        <div class="header__right--block">
+            <span class="header__right--icon"><i class="wi wi-barometer"></i></span>
+            <div class="header__right--content">
+                <span class="header__right--content--title">Air Pressure</span>
+                <span class="header__right--content--text">${Math.round(currently.pressure)} PS</span>
+            </div>
+        </div>
+        <div class="header__right--block">
+            <span class="header__right--icon"><i class="wi wi-sleet"></i></span>
+            <div class="header__right--content">
+                <span class="header__right--content--title">Chance of Rain</span>
+                <span class="header__right--content--text">${Math.round(currently.precipProbability * 100)} %</span>
+            </div>
+        </div>
+        <div class="header__right--block">
+            <span class="header__right--icon"><i class="wi wi-strong-wind"></i></span>
+            <div class="header__right--content">
+                <span class="header__right--content--title">Wind Speed</span>
+                <span class="header__right--content--text">${currently.windSpeed} km/h</span>
+            </div>
+        </div>
+    `;
+    elements.searchResRight.insertAdjacentHTML('afterbegin', markupRight);
 };
 
 const renderHourly = hourly => {
@@ -123,10 +161,10 @@ const renderButtons = (page, numResults, resPerPage) => {
         button = createButton(page, 'prev');
     }
 
-    elements.searchResPages.insertAdjacentHTML('afterbegin', button);
+    elements.searchResPages.insertAdjacentHTML('beforeend', button);
 };
 
-export const renderResults = (hourly, currently, page = 1, resPerPage = 5) => {
+export const renderResHourly = (hourly, page = 1, resPerPage = 5) => {
     // Render results of current page
     const start = (page - 1) * resPerPage;
     const end = page * resPerPage;
@@ -134,10 +172,7 @@ export const renderResults = (hourly, currently, page = 1, resPerPage = 5) => {
     hourly.slice(start, end).forEach(renderHourly);
 
     // Render pagination buttons
-    renderButtons(page, hourly.length, resPerPage);
-
-    // Render currently results
-    renderCurrently(currently);
+    renderButtons(page, hourly.length, resPerPage);   
 };
 
 

@@ -1,6 +1,6 @@
 import Search from './models/Search';
 import * as searchView from './views/searchView';
-import { elements, renderLoader, clearLoader } from './views/base';
+import { elements, renderLoader, clearLoader, renderCurrently } from './views/base';
 
 // Global state of the app
 // - Search object
@@ -25,17 +25,21 @@ const controlSearch = async () => {
         // 3. Prepare UI for results
         searchView.clearInput();
         searchView.clearResults();
-        renderLoader(elements.searchRes);
+        renderLoader(elements.searchResList);
         renderLoader(elements.searchResLeft);       
+        renderLoader(elements.searchResRight);       
 
         // 4. Search for recipes
         await state.search.getResults();
 
         // 5. Render results on UI
         // console.log(state.search.result);
-        clearLoader(elements.searchRes);
+        clearLoader(elements.searchResList);
         clearLoader(elements.searchResLeft);
-        searchView.renderResults(state.search.hourly, state.search.currently);
+        clearLoader(elements.searchResRight);
+        searchView.renderResHourly(state.search.hourly);
+        searchView.renderCurrently(state.search.currently);
+        
     }
 }
 
@@ -50,8 +54,8 @@ elements.searchResPages.addEventListener('click', e => {
 
     if (btn) {
         const goToPage = parseInt(btn.dataset.goto, 10);
-        searchView.clearResults();
-        searchView.renderResults(state.search.hourly, goToPage);
+        searchView.clearResList();
+        searchView.renderResHourly(state.search.hourly, goToPage);
 
         // console.log(goToPage);
     }

@@ -181,6 +181,8 @@
         font-size: 3rem;
         font-weight: 400;
 
+        width: 26.5rem;
+
 
 
         &--icon {
@@ -222,6 +224,9 @@
         margin-top: 5rem;
         margin-right: 5rem;
 
+        width: 26.5rem;
+
+
         &--block {
             display: flex;
             padding-bottom: 3rem;
@@ -256,7 +261,6 @@
         }
 
         &--page {
-            width: 26.5rem;
             display: flex;
             flex-direction: row-reverse;
             justify-content: space-between;
