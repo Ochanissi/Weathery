@@ -8,6 +8,9 @@ import { elements, renderLoader, clearLoader } from './views/base';
 // - Liked recipes
 const state = {};
 
+// ---------------------------------
+// SEARCH CONTROLLER
+// ---------------------------------
 const controlSearch = async () => {
     // 1. Get the query from the view
     // const query_lat = '42.3601'; // TODO 
@@ -23,14 +26,16 @@ const controlSearch = async () => {
         searchView.clearInput();
         searchView.clearResults();
         renderLoader(elements.searchRes);
+        renderLoader(elements.searchResLeft);       
 
         // 4. Search for recipes
         await state.search.getResults();
 
         // 5. Render results on UI
         // console.log(state.search.result);
-        clearLoader();
-        searchView.renderResults(state.search.result);
+        clearLoader(elements.searchRes);
+        clearLoader(elements.searchResLeft);
+        searchView.renderResults(state.search.hourly, state.search.currently);
     }
 }
 
@@ -46,7 +51,7 @@ elements.searchResPages.addEventListener('click', e => {
     if (btn) {
         const goToPage = parseInt(btn.dataset.goto, 10);
         searchView.clearResults();
-        searchView.renderResults(state.search.result, goToPage);
+        searchView.renderResults(state.search.hourly, goToPage);
 
         // console.log(goToPage);
     }
