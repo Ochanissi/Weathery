@@ -4,7 +4,8 @@ export const elements = {
     searchInput_long: document.querySelector('.header__top--search--input-longitude'),
     searchRes: document.querySelector('.header__bottom'),
     searchResList: document.querySelector('.header__bottom'),
-    searchResPages: document.querySelector('.header__right--page')
+    searchResPages: document.querySelector('.header__right--page'),
+    searchResLeft: document.querySelector('.header__left')
 };
 
 export const elementStrings = {

@@ -11,58 +11,80 @@ export const clearInput = () => {
 export const clearResults = () => {
     elements.searchResList.innerHTML ='';
     elements.searchResPages.innerHTML ='';
+    elements.searchResLeft.innerHTML = '';
+};
+
+const getIcons = (data) => {
+    switch (data.icon) {
+        case 'clear-day':
+            data.icon = 'wi-day-sunny';
+            break;
+        case 'clear-night':
+            data.icon = 'wi-night-clear';
+            break;
+        case 'rain':
+            data.icon = 'wi-rain';
+            break;
+        case 'snow':
+            data.icon = 'wi-snow';
+            break;
+        case 'sleet':
+            data.icon = 'wi-sleet';
+            break;
+        case 'wind':
+            data.icon = 'wi-cloudy-windy';
+            break;
+        case 'fog':
+            data.icon = 'wi-fog';
+            break;
+        case 'cloudy':
+            data.icon = 'wi-cloudy';
+            break;
+        case 'partly-cloudy-day':
+            data.icon = 'wi-day-cloudy';
+            break;
+        case 'partly-cloudy-night':
+            data.icon = 'wi-night-alt-cloudy';
+            break;
+        case 'hail':
+            data.icon = 'wi-hail';
+            break;
+        case 'thunderstorm':
+            data.icon = 'wi-thunderstorm';
+            break;
+        case 'tornado':
+            data.icon = 'wi-tornado';
+            break;
+        default:
+            data.icon = 'wi-cloud';
+    };
+};
+
+
+const renderCurrently = currently => {
+    getIcons(currently);
+
+    const markup = `
+        <div class="header__left--icon"><i class="wi ${currently.icon}"></i></div>
+        <div class="header__left--summary">${currently.summary}</div>
+        <div class="header__left--city">City Name</div>
+        <div class="header__left--temp">${Math.round(currently.temperature)} &deg;C</div>
+        <div class="header__left--change">
+            <button class="btn">
+                <span>Change Units</span>
+            </button>
+        </div>
+    `;
+    elements.searchResLeft.insertAdjacentHTML('afterbegin', markup);
 };
 
 const renderHourly = hourly => {
+    getIcons(hourly);
+
     const date = new Date(hourly.time * 1000);
     const hours = date.getHours();
     const mins = "0" + date.getMinutes();
     const secs = "0" + date.getSeconds();
-
-    switch (hourly.icon) {
-        case 'clear-day':
-            hourly.icon = 'wi-day-sunny';
-            break;
-        case 'clear-night':
-            hourly.icon = 'wi-night-clear';
-            break;
-        case 'rain':
-            hourly.icon = 'wi-rain';
-            break;
-        case 'snow':
-            hourly.icon = 'wi-snow';
-            break;
-        case 'sleet':
-            hourly.icon = 'wi-sleet';
-            break;
-        case 'wind':
-            hourly.icon = 'wi-cloudy-windy';
-            break;
-        case 'fog':
-            hourly.icon = 'wi-fog';
-            break;
-        case 'cloudy':
-            hourly.icon = 'wi-cloudy';
-            break;
-        case 'partly-cloudy-day':
-            hourly.icon = 'wi-day-cloudy';
-            break;
-        case 'partly-cloudy-night':
-            hourly.icon = 'wi-night-alt-cloudy';
-            break;
-        case 'hail':
-            hourly.icon = 'wi-hail';
-            break;
-        case 'thunderstorm':
-            hourly.icon = 'wi-thunderstorm';
-            break;
-        case 'tornado':
-            hourly.icon = 'wi-tornado';
-            break;
-        default:
-            hourly.icon = 'wi-cloud';
-    }
-
 
     const markup = `
         <li class="header__bottom--day">
@@ -104,7 +126,7 @@ const renderButtons = (page, numResults, resPerPage) => {
     elements.searchResPages.insertAdjacentHTML('afterbegin', button);
 };
 
-export const renderResults = (hourly, page = 1, resPerPage = 5) => {
+export const renderResults = (hourly, currently, page = 1, resPerPage = 5) => {
     // Render results of current page
     const start = (page - 1) * resPerPage;
     const end = page * resPerPage;
@@ -113,4 +135,9 @@ export const renderResults = (hourly, page = 1, resPerPage = 5) => {
 
     // Render pagination buttons
     renderButtons(page, hourly.length, resPerPage);
+
+    // Render currently results
+    renderCurrently(currently);
 };
+
+
