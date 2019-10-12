@@ -19,19 +19,37 @@
     // justify-items: center;
     grid-gap: 1rem;
 
-    background-image: linear-gradient(
-        to right bottom, 
-        rgba($color-grey-dark-2, .5),
-        rgba($color-grey-dark-3, .5)), 
-    url(/img/background--clear-day.jpg);
-    background-size: cover;
-    background-position: top;
     position: relative;
 
     color: white;
 
+
+    background-image: url(/img/background--wi-cloud.jpg);
+    transition: background-image 1s ease-in-out;
+
+    background-size: cover;
+    background-position: top;
+
+    &:before {
+        pointer-events: none;
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-image: linear-gradient(
+            to right bottom, 
+            rgba($color-grey-dark-2, .5),
+            rgba($color-grey-dark-3, .5));
+    }
+
+
+
+
     &__top {
         // background-color: red;
+        z-index: 999;
 
         grid-column: col-start 3 / col-end 6;
         grid-row: 1 / 2;
@@ -126,16 +144,33 @@
 
     &__bottom {
         // background-color: blue;
+        z-index: 999;
 
         grid-column: full-start / full-end;
         grid-row: 3 / 4;
 
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+        flex-direction: column;
+        
 
-        margin: 3rem 0;
+        margin: 5rem;
 
+        &--page {
+            display: flex;
+            flex-direction: row-reverse;
+            // justify-content: flex-end;
+
+            & .btn:first-child {
+                margin-left: 1rem;
+            }
+
+        }
+
+        &--days {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
 
         &--day {
             display: flex;
@@ -169,6 +204,7 @@
 
     &__left {
         // background-color: brown;
+        z-index: 999;
 
         grid-column: full-start / center-start;
         grid-row: 1 / 3;
@@ -204,16 +240,11 @@
             flex-grow: 1;   
  
         }
-
-        &--change {
-
-        }
-
-
     }
 
     &__right {
         // background-color: green;
+        z-index: 999;
 
         grid-column: center-end / full-end;
         grid-row: 1 / 3;
@@ -259,13 +290,6 @@
 
 
         }
-
-        &--page {
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: space-between;
-        }
-
     }
 }
 

@@ -25,20 +25,22 @@ const controlSearch = async () => {
         // 3. Prepare UI for results
         searchView.clearInput();
         searchView.clearResults();
-        renderLoader(elements.searchResList);
-        renderLoader(elements.searchResLeft);       
-        renderLoader(elements.searchResRight);       
+        [elements.searchResList, elements.searchResLeft, elements.searchResRight].forEach(event => renderLoader(event));
+        // renderLoader(elements.searchResList);
+        // renderLoader(elements.searchResLeft);       
+        // renderLoader(elements.searchResRight);       
 
         // 4. Search for recipes
         await state.search.getResults();
 
         // 5. Render results on UI
         // console.log(state.search.result);
-        clearLoader(elements.searchResList);
-        clearLoader(elements.searchResLeft);
-        clearLoader(elements.searchResRight);
+        [elements.searchResList, elements.searchResLeft, elements.searchResRight].forEach(event => clearLoader(event));
+        // clearLoader(elements.searchResList);
+        // clearLoader(elements.searchResLeft);
+        // clearLoader(elements.searchResRight);
         searchView.renderResHourly(state.search.hourly);
-        searchView.renderCurrently(state.search.currently);
+        searchView.renderCurrently(state.search.result);
         
     }
 }

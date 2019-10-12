@@ -10,9 +10,9 @@ export default class Search {
     async getResults() {
         try {
             const res = await axios(`${proxy}https://api.darksky.net/forecast/${key}/${this.query_lat},${this.query_long}?units=si&exclude=minutely,flags,alerts`);
-            // console.log(res);
+            console.log(res);
             this.result = res.data;
-            // console.log(this.result);
+            console.log(this.result);
             this.currently = res.data.currently;
             // console.log(this.result.currently);
             this.hourly = res.data.hourly.data;
