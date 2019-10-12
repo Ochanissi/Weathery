@@ -1,9 +1,10 @@
 export const elements = {
+    header: document.querySelector(".header"),
     searchForm: document.querySelector('.header__top--search-coords'),
     searchInput_lat: document.querySelector('.header__top--search--input-latitude'),
     searchInput_long: document.querySelector('.header__top--search--input-longitude'),
-    searchResList: document.querySelector('.header__bottom'),
-    searchResPages: document.querySelector('.header__right--page'),
+    searchResList: document.querySelector('.header__bottom--days'),
+    searchResPages: document.querySelector('.header__bottom--page'),
     searchResLeft: document.querySelector('.header__left'),
     searchResRight: document.querySelector('.header__right--blocks')
 };

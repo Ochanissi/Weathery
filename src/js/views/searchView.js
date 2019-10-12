@@ -66,20 +66,18 @@ const getIcons = (data) => {
     };
 };
 
+export const renderCurrently = result => {
+    getIcons(result.currently);
 
-export const renderCurrently = currently => {
-    getIcons(currently);
+    header.style.backgroundImage = `
+        url(/img/background--${result.currently.icon}.jpg)
+    `;
 
     const markupLeft = `
-        <div class="header__left--icon"><i class="wi ${currently.icon}"></i></div>
-        <div class="header__left--summary">${currently.summary}</div>
-        <div class="header__left--city">City Name</div>
-        <div class="header__left--temp">${Math.round(currently.temperature)} &deg;C</div>
-        <div class="header__left--change">
-            <button class="btn">
-                <span>Change Units</span>
-            </button>
-        </div>
+        <div class="header__left--icon"><i class="wi ${result.currently.icon}"></i></div>
+        <div class="header__left--summary">${result.currently.summary}</div>
+        <div class="header__left--city">${result.timezone.split("/").reverse().join(" - ").replace(/[_]/gi,' ')}</div>
+        <div class="header__left--temp">${Math.round(result.currently.temperature)} &deg;C</div>
     `;
     elements.searchResLeft.insertAdjacentHTML('afterbegin', markupLeft);
 
@@ -88,28 +86,28 @@ export const renderCurrently = currently => {
             <span class="header__right--icon"><i class="wi wi-humidity"></i></span>
             <div class="header__right--content">
                     <span class="header__right--content--title">Humidity</span>
-                    <span class="header__right--content--text">${Math.round(currently.humidity * 100)} %</span>
+                    <span class="header__right--content--text">${Math.round(result.currently.humidity * 100)} %</span>
             </div>
         </div>
         <div class="header__right--block">
             <span class="header__right--icon"><i class="wi wi-barometer"></i></span>
             <div class="header__right--content">
                 <span class="header__right--content--title">Air Pressure</span>
-                <span class="header__right--content--text">${Math.round(currently.pressure)} PS</span>
+                <span class="header__right--content--text">${Math.round(result.currently.pressure)} PS</span>
             </div>
         </div>
         <div class="header__right--block">
             <span class="header__right--icon"><i class="wi wi-sleet"></i></span>
             <div class="header__right--content">
                 <span class="header__right--content--title">Chance of Rain</span>
-                <span class="header__right--content--text">${Math.round(currently.precipProbability * 100)} %</span>
+                <span class="header__right--content--text">${Math.round(result.currently.precipProbability * 100)} %</span>
             </div>
         </div>
         <div class="header__right--block">
             <span class="header__right--icon"><i class="wi wi-strong-wind"></i></span>
             <div class="header__right--content">
                 <span class="header__right--content--title">Wind Speed</span>
-                <span class="header__right--content--text">${currently.windSpeed} km/h</span>
+                <span class="header__right--content--text">${result.currently.windSpeed} km/h</span>
             </div>
         </div>
     `;
