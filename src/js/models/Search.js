@@ -26,23 +26,26 @@ export default class Search {
 
     changeUnits(bool) {
         if (bool) {
-            console.log(bool);
+            // console.log(bool);
 
             this.currently.temperature = this.currently.temperature * 9 / 5 + 32;
             this.hourly.forEach(x => {
                 x.temperature = x.temperature *  1.8 + 32;
             });
-            console.log(this.hourly[0].temperature);
+            // console.log(this.hourly[0].temperature);
+
+            this.currently.windSpeed *= 0.62137;
 
         } else {
-            console.log(bool);
+            // console.log(bool);
 
             this.currently.temperature = (this.currently.temperature - 32) / 9 / 5;
             this.hourly.forEach(x => {
                 x.temperature = (x.temperature - 32) / 1.8;
             });
+            // console.log(this.hourly[0].temperature);
 
-            console.log(this.hourly[0].temperature);
+            this.currently.windSpeed /= 0.62137;
         }
 
 

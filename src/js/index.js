@@ -59,6 +59,8 @@ elements.searchResPages.addEventListener('click', e => {
         const goToPage = parseInt(btn.dataset.goto, 10);
         searchView.clearResList();
         searchView.renderResHourly(state.search.hourly, goToPage);
+        searchView.updateUnits(state.search.result, state.search.hourly, state.clicked);
+
 
         // console.log(goToPage);
     }
@@ -72,29 +74,15 @@ elements.changeUnits.addEventListener('click', e => {
     // console.log(btn);
     
     if (btn) {
-        console.log('kek');
         state.clicked ? state.clicked = false : state.clicked = true;
-        console.log(state.clicked);
+        // console.log(state.clicked);
 
         state.search.changeUnits(state.clicked);
-        searchView.clearResults();
-        searchView.renderCurrently(state.search.result);
-        searchView.renderResHourly(state.search.hourly);
+
+        searchView.updateUnits(state.search.result, state.search.hourly, state.clicked);
+        // searchView.clearResults();
+        // searchView.renderCurrently(state.search.result);
+        // searchView.renderResHourly(state.search.hourly);
     }
 
 });
-
-
-
-// var clicked = false;
-
-// function toggleBtnClick() {
-//   var img = document.getElementById('baseImg');
-//   if (clicked) {
-//     img.src = 'http://via.placeholder.com/350x150/e9e9e9/000000';
-//     clicked = false;
-//   } else {
-//     img.src = 'http://via.placeholder.com/350x150/3fafed/000000';
-//     clicked = true;
-//   }
-// }
