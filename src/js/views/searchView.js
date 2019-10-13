@@ -111,7 +111,7 @@ export const renderCurrently = result => {
             <span class="header__right--icon"><i class="wi wi-strong-wind"></i></span>
             <div class="header__right--content">
                 <span class="header__right--content--title">Wind Speed</span>
-                <span class="header__right--content--text">${result.currently.windSpeed} km/h</span>
+                <span class="header__right--content--text header__right--content--text--speed">${result.currently.windSpeed.toFixed(2)} km/h</span>
             </div>
         </div>
     `;
@@ -177,4 +177,19 @@ export const renderResHourly = (hourly, page = 1, resPerPage = 5) => {
     renderButtons(page, hourly.length, resPerPage);   
 };
 
+export const updateUnits = (result, hourly, bool, page = 1, resPerPage = 5) => {
+    
+    const start = (page - 1) * resPerPage;
+    const end = page * resPerPage;
+    const classes = document.getElementsByClassName('header__bottom--day--temp');
 
+    hourly.slice(start, end).forEach((x, i) => {
+        classes[i].textContent = `${Math.round(x.temperature)} °${bool ? 'F' : 'C'}`;
+    });
+
+
+    document.querySelector('.header__left--temp').textContent = `${Math.round(result.currently.temperature)} °${bool ? 'F' : 'C'}`;
+
+
+    document.querySelector('.header__right--content--text--speed').textContent = `${result.currently.windSpeed.toFixed(2)} ${bool ? 'mi' : 'km'}/h`;
+}
