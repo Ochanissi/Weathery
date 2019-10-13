@@ -6,7 +6,8 @@ export const elements = {
     searchResList: document.querySelector('.header__bottom--days'),
     searchResPages: document.querySelector('.header__bottom--page'),
     searchResLeft: document.querySelector('.header__left'),
-    searchResRight: document.querySelector('.header__right--blocks')
+    searchResRight: document.querySelector('.header__right--blocks'),
+    changeUnits: document.querySelector('.header__top--btns--change')
 };
 
 export const elementStrings = {

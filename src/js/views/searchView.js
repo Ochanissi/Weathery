@@ -61,17 +61,21 @@ const getIcons = (data) => {
         case 'tornado':
             data.icon = 'wi-tornado';
             break;
-        default:
-            data.icon = 'wi-cloud';
+        // default:
+        //     data.icon = 'wi-cloud';
     };
 };
 
-export const renderCurrently = result => {
+export const renderBackgroundImage = result => {
     getIcons(result.currently);
-
+    
     header.style.backgroundImage = `
         url(/img/background--${result.currently.icon}.jpg)
     `;
+};
+
+export const renderCurrently = result => {
+
 
     const markupLeft = `
         <div class="header__left--icon"><i class="wi ${result.currently.icon}"></i></div>
