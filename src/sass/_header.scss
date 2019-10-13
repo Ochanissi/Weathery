@@ -61,11 +61,11 @@
         align-items: center;
         justify-items: center;
 
-        margin-top: 1rem;
+        margin-top: 2rem;
 
         &--title {
             display: flex;
-            padding-bottom: 2rem;
+            margin-bottom: 2rem;
             
             &--icon {
                 display: flex;
@@ -80,6 +80,8 @@
         &--forms {
             display: flex;
             flex-direction: column;
+
+            margin-bottom: 2rem;
 
             
         }
@@ -136,6 +138,19 @@
             }
 
 
+        }
+
+        &--btns {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            &--change {
+                margin-right: 5rem;
+            }
+
+            &--map {
+            }
         }
 
 

@@ -13,10 +13,10 @@ const state = {};
 // ---------------------------------
 const controlSearch = async () => {
     // 1. Get the query from the view
-    // const query_lat = '42.3601'; // TODO 
-    // const query_long = '-71.0589'; // TODO 
-    const query_lat = searchView.getInput_lat();
-    const query_long = searchView.getInput_long();
+    const query_lat = '42.3601'; // TODO 
+    const query_long = '-71.0589'; // TODO 
+    // const query_lat = searchView.getInput_lat();
+    // const query_long = searchView.getInput_long();
 
     if (query_lat && query_long) {
         // 2. New search object and add to state
@@ -39,6 +39,7 @@ const controlSearch = async () => {
         // clearLoader(elements.searchResList);
         // clearLoader(elements.searchResLeft);
         // clearLoader(elements.searchResRight);
+        searchView.renderBackgroundImage(state.search.result);
         searchView.renderResHourly(state.search.hourly);
         searchView.renderCurrently(state.search.result);
         
@@ -64,5 +65,36 @@ elements.searchResPages.addEventListener('click', e => {
     
 });
 
+// Handling recipe button clicks
+state.clicked = false;
+elements.changeUnits.addEventListener('click', e => {
+    const btn = e.target.closest('.btn');
+    // console.log(btn);
+    
+    if (btn) {
+        console.log('kek');
+        state.clicked ? state.clicked = false : state.clicked = true;
+        console.log(state.clicked);
 
-// const search = new Search('42.3601', '-71.0589');
+        state.search.changeUnits(state.clicked);
+        searchView.clearResults();
+        searchView.renderCurrently(state.search.result);
+        searchView.renderResHourly(state.search.hourly);
+    }
+
+});
+
+
+
+// var clicked = false;
+
+// function toggleBtnClick() {
+//   var img = document.getElementById('baseImg');
+//   if (clicked) {
+//     img.src = 'http://via.placeholder.com/350x150/e9e9e9/000000';
+//     clicked = false;
+//   } else {
+//     img.src = 'http://via.placeholder.com/350x150/3fafed/000000';
+//     clicked = true;
+//   }
+// }
