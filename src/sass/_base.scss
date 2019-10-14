@@ -66,11 +66,11 @@ body {
 
 .container {
     display: grid;
-    grid-template-rows: 100vh min-content;
+    grid-template-rows: 100vh repeat(3, min-content);
     grid-template-columns: [full-start] minmax(max-content, 14rem) [center-start]
-    repeat(2, minmax(6rem, 1fr))
-    repeat(8, [col-start] minmax(max-content, 14rem) [col-end])
-    repeat(2, minmax(6rem, 1fr))
+    minmax(6rem, 1fr)
+    [col-start] minmax(max-content, 14rem) [col-end]
+    minmax(6rem, 1fr)
     [center-end] minmax(max-content, 14rem) [full-end];
 
 
