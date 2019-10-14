@@ -1,15 +1,14 @@
 .header {
     // background-color: red;
 
-    grid-row: 1 / 2;
     grid-column: full-start / full-end;
 
     display: grid;
     grid-template-rows: max-content 1fr max-content;
     grid-template-columns: [full-start] minmax(max-content, 14rem) [center-start]
-    repeat(2, minmax(6rem, 1fr))
-    repeat(8, [col-start] minmax(max-content, 14rem) [col-end])
-    repeat(2, minmax(6rem, 1fr))
+    minmax(6rem, 1fr)
+    [col-start] minmax(max-content, 14rem) [col-end]
+    minmax(6rem, 1fr)
     [center-end] minmax(max-content, 14rem) [full-end];
 
 
@@ -51,7 +50,7 @@
         // background-color: red;
         z-index: 999;
 
-        grid-column: col-start 3 / col-end 6;
+        grid-column: col-start / col-end;
         grid-row: 1 / 2;
 
         display: flex;
@@ -233,7 +232,7 @@
         font-size: 3rem;
         font-weight: 400;
 
-        width: 26.5rem;
+        // width: 26.5rem;
 
 
 
@@ -271,7 +270,7 @@
         margin-top: 5rem;
         margin-right: 5rem;
 
-        width: 26.5rem;
+        // width: 26.5rem;
 
 
         &--block {

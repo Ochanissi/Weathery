@@ -7,6 +7,7 @@ import { elements, renderLoader, clearLoader, renderCurrently } from './views/ba
 // - Current recipe object
 // - Liked recipes
 const state = {};
+console.log(state);
 
 // ---------------------------------
 // SEARCH CONTROLLER
