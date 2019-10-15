@@ -34,6 +34,19 @@
 
         margin-bottom: 5rem;
 
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        
+        justify-content: center;
+        align-content: center;
+        justify-items: center;
+        align-items: center;
+        
+        text-align: center;
+        
+        grid-gap: 5rem;
+        padding: 0 2rem;
+
 
         .weather-card {
             height: 45rem;
@@ -46,8 +59,8 @@
                 height: 57%;
                 background-image: linear-gradient(
                     to right bottom, 
-                    rgba($color-grey-light-1, .3),
-                    rgba($color-grey-light-2, .3)),
+                    rgba($color-grey-dark-1, .5),
+                    rgba($color-grey-dark-2, .5)),
                     url(/img/background--wi-cloud.jpg);
             
             
@@ -57,14 +70,60 @@
             
                 position: relative;
 
-                &--type {
-                    text-transform: uppercase;
+
+                &--date {
+                    padding-top: .5rem;
+                    display: flex;
+                    justify-content: center;
+                    color: $color-white;
+                    font-weight: 500;
+                    
+                }
+
+                &--icon {
+                    font-size: 3.5rem;
+                    position: absolute;
+                    top: 1.5rem;
+                    right: 2rem;
+                    display: inline-block;
+                    color: $color-white;
+
+                }
+
+                &--humidity {
+                    color: $color-white;
+                    position: absolute;
+                    bottom: 6rem;
+                    left: 2rem;
+                    z-index: 9;
+                    font-weight: 500;
+
+                    display: flex;
+                    align-items: center;
+                    
+
+                    &--text {
+                        padding-left: .75rem;
+                    }
+
+                }
+
+                &--wind {
                     color: $color-white;
                     position: absolute;
                     bottom: 6rem;
                     right: 2rem;
                     z-index: 9;
-                    font-weight: 700;
+                    font-weight: 500;
+
+                    display: flex;
+                    align-items: center;
+                    
+                    &--text {
+                        padding-left: .75rem;
+                    }
+
+
                 }
             }
 
@@ -143,6 +202,7 @@
 
                     &--summary {
                         margin-bottom: .5rem;
+                        font-size: 1.5rem;
                     }
 
                     &--rain-chance {

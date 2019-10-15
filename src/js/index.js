@@ -1,6 +1,6 @@
 import Search from './models/Search';
 import * as searchView from './views/searchView';
-import { elements, renderLoader, clearLoader, renderCurrently } from './views/base';
+import { elements, renderLoader, clearLoader } from './views/base';
 
 // Global state of the app
 // - Search object
@@ -26,7 +26,7 @@ const controlSearch = async () => {
         // 3. Prepare UI for results
         searchView.clearInput();
         searchView.clearResults();
-        [elements.searchResList, elements.searchResLeft, elements.searchResRight].forEach(event => renderLoader(event));
+        [elements.searchResList, elements.searchResLeft, elements.searchResRight, elements.searchResDaily].forEach(event => renderLoader(event));
         // renderLoader(elements.searchResList);
         // renderLoader(elements.searchResLeft);       
         // renderLoader(elements.searchResRight);       
@@ -36,13 +36,14 @@ const controlSearch = async () => {
 
         // 5. Render results on UI
         // console.log(state.search.result);
-        [elements.searchResList, elements.searchResLeft, elements.searchResRight].forEach(event => clearLoader(event));
+        [elements.searchResList, elements.searchResLeft, elements.searchResRight, elements.searchResDaily].forEach(event => clearLoader(event));
         // clearLoader(elements.searchResList);
         // clearLoader(elements.searchResLeft);
         // clearLoader(elements.searchResRight);
         searchView.renderBackgroundImage(state.search.result);
         searchView.renderResHourly(state.search.hourly);
         searchView.renderCurrently(state.search.result);
+        searchView.renderResDaily(state.search.daily);
         
     }
 }

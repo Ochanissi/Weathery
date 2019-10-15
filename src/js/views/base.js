@@ -1,5 +1,6 @@
 export const elements = {
     header: document.querySelector(".header"),
+    // weatherImage: document.querySelector('.weather-card__image-section'),
     searchForm: document.querySelector('.header__top--search-coords'),
     searchInput_lat: document.querySelector('.header__top--search--input-latitude'),
     searchInput_long: document.querySelector('.header__top--search--input-longitude'),
@@ -7,6 +8,7 @@ export const elements = {
     searchResPages: document.querySelector('.header__bottom--page'),
     searchResLeft: document.querySelector('.header__left'),
     searchResRight: document.querySelector('.header__right--blocks'),
+    searchResDaily: document.querySelector('.daily__days'),
     changeUnits: document.querySelector('.header__top--btns--change')
 };
 
