@@ -177,6 +177,73 @@ export const renderResHourly = (hourly, page = 1, resPerPage = 5) => {
     renderButtons(page, hourly.length, resPerPage);   
 };
 
+const renderDailyBackground = daily => {
+    getIcons(daily);
+    
+    document.querySelector('.weather-card__image-section:nth').style.backgroundImage = `
+        url(/img/background--${daily.icon}.jpg)
+    `;
+    
+};
+
+const renderDaily = daily => {
+    getIcons(daily);
+
+    const date = new Date(daily.time * 1000);
+    const hours = date.getHours();
+    const mins = "0" + date.getMinutes();
+    const secs = "0" + date.getSeconds();
+
+    const time = date.toString().split(" ");
+
+
+
+    const markup = `
+        <article class="weather-card">
+            <div class="weather-card__image-section">
+                <span class="weather-card__image-section--date">${time[0]} | ${time[1] + " " + time[2]}</span>
+                <div class="weather-card__image-section--icon"><i class="wi ${daily.icon}"></i></div>
+                <div class="weather-card__image-section--humidity">
+                    <i class="wi wi-humidity"></i>
+                    <div class="weather-card__image-section--humidity--text">${Math.round(daily.humidity * 100)} %</div>
+                </div>
+                <div class="weather-card__image-section--wind">
+                    <i class="wi wi-strong-wind"></i>
+                    <div class="weather-card__image-section--wind--text">${daily.windSpeed.toFixed(2)} km/h</div>
+                </div>
+            </div>
+            <div class="weather-card__info-section">
+                <div class="weather-card__info-section--wave"></div>
+                <div class="weather-card__info-section--layer-1"></div>
+                <div class="weather-card__info-section--layer-2"></div>
+                <div class="weather-card__info-section--layer-3"></div>
+                <div class="weather-card__info-section--contents">
+                    <span class="weather-card__info-section--contents--temperature">19 &deg;C</span>
+                    <span class="weather-card__info-section--contents--summary">Rain until morning, starting again in the evening.</span>
+                    <span class="weather-card__info-section--contents--rain-chance">Chance of rain: 50 %</span>
+                    <div class="weather-card__info-section--contents--min-max">
+                        <span class="weather-card__info-section--contents--min">Min: 5 &deg;C</span>     
+                        <span class="weather-card__info-section--contents--between"> | </span>  
+                        <span class="weather-card__info-section--contents--max">Max: 23 &deg;C</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </article>
+    `;
+
+
+    elements.searchResDaily.insertAdjacentHTML('beforeend', markup);
+};
+
+export const renderResDaily = daily => {
+
+    daily.slice(0, daily.length).forEach(renderDaily);
+    daily.slice(0, daily.length).forEach(renderDailyBackground);
+
+};
+
+
 export const updateUnits = (result, hourly, bool, page = 1, resPerPage = 5) => {
     
     const start = (page - 1) * resPerPage;

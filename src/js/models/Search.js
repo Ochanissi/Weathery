@@ -18,7 +18,7 @@ export default class Search {
             this.hourly = res.data.hourly.data;
             // console.log(this.result.hourly.data);
             this.daily = res.data.daily.data;
-            // console.log(this.result.daily.data);
+            console.log(this.result.daily.data);
         } catch (error) {
             alert(error);
         }
