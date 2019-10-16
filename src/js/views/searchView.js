@@ -20,6 +20,10 @@ export const clearResList = () => {
     elements.searchResPages.innerHTML ='';
 };
 
+export const clearResDaily = () => {
+    elements.searchResDaily.innerHTML ='';
+};
+
 const getIcons = (data) => {
     switch (data.icon) {
         case 'clear-day':
@@ -180,7 +184,7 @@ export const renderResHourly = (hourly, page = 1, resPerPage = 5) => {
 const renderDailyBackground = daily => {
     getIcons(daily);
     
-    document.querySelector('.weather-card__image-section:nth').style.backgroundImage = `
+    document.querySelector(`.weather-card__image-section--${daily.icon}`).style.backgroundImage = `
         url(/img/background--${daily.icon}.jpg)
     `;
     
@@ -200,7 +204,7 @@ const renderDaily = daily => {
 
     const markup = `
         <article class="weather-card">
-            <div class="weather-card__image-section">
+            <div class="weather-card__image-section weather-card__image-section--${daily.icon}">
                 <span class="weather-card__image-section--date">${time[0]} | ${time[1] + " " + time[2]}</span>
                 <div class="weather-card__image-section--icon"><i class="wi ${daily.icon}"></i></div>
                 <div class="weather-card__image-section--humidity">
@@ -218,13 +222,13 @@ const renderDaily = daily => {
                 <div class="weather-card__info-section--layer-2"></div>
                 <div class="weather-card__info-section--layer-3"></div>
                 <div class="weather-card__info-section--contents">
-                    <span class="weather-card__info-section--contents--temperature">19 &deg;C</span>
-                    <span class="weather-card__info-section--contents--summary">Rain until morning, starting again in the evening.</span>
-                    <span class="weather-card__info-section--contents--rain-chance">Chance of rain: 50 %</span>
+                    <span class="weather-card__info-section--contents--temperature">${Math.round((daily.temperatureHigh + daily.temperatureLow) / 2)} &deg;C</span>
+                    <span class="weather-card__info-section--contents--summary">${daily.summary}</span>
+                    <span class="weather-card__info-section--contents--rain-chance">Chance of rain: ${Math.round(daily.precipProbability * 100)} %</span>
                     <div class="weather-card__info-section--contents--min-max">
-                        <span class="weather-card__info-section--contents--min">Min: 5 &deg;C</span>     
+                        <span class="weather-card__info-section--contents--min">Min: ${Math.round(daily.temperatureLow)} &deg;C</span>     
                         <span class="weather-card__info-section--contents--between"> | </span>  
-                        <span class="weather-card__info-section--contents--max">Max: 23 &deg;C</span>
+                        <span class="weather-card__info-section--contents--max">Max: ${Math.round(daily.temperatureHigh)} &deg;C</span>
                     </div>
                 </div>
             </div>
@@ -232,27 +236,42 @@ const renderDaily = daily => {
         </article>
     `;
 
-
+    
     elements.searchResDaily.insertAdjacentHTML('beforeend', markup);
+
+
 };
 
 export const renderResDaily = daily => {
 
     daily.slice(0, daily.length).forEach(renderDaily);
+
+};
+
+export const renderResDailyBackground = daily => {
+
     daily.slice(0, daily.length).forEach(renderDailyBackground);
 
 };
 
 
-export const updateUnits = (result, hourly, bool, page = 1, resPerPage = 5) => {
+
+export const updateUnits = (result, hourly, daily, bool, page = 1, resPerPage = 5) => {
     
     const start = (page - 1) * resPerPage;
     const end = page * resPerPage;
     const classes = document.getElementsByClassName('header__bottom--day--temp');
+    const dailyWind = document.getElementsByClassName('weather-card__image-section--wind--text');
 
     hourly.slice(start, end).forEach((x, i) => {
         classes[i].textContent = `${Math.round(x.temperature)} °${bool ? 'F' : 'C'}`;
     });
+
+    daily.slice(0, daily.length).forEach((x, i) => {
+        dailyWind[i].textContent = `${x.windSpeed.toFixed(2)} ${bool ? 'mi' : 'km'}/h`;
+    });
+
+    // console.log('kek ' + daily[0].windSpeed.toFixed(2)) ;
 
 
     document.querySelector('.header__left--temp').textContent = `${Math.round(result.currently.temperature)} °${bool ? 'F' : 'C'}`;

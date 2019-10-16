@@ -26,6 +26,8 @@ const controlSearch = async () => {
         // 3. Prepare UI for results
         searchView.clearInput();
         searchView.clearResults();
+        searchView.clearResList();
+        searchView.clearResDaily();
         [elements.searchResList, elements.searchResLeft, elements.searchResRight, elements.searchResDaily].forEach(event => renderLoader(event));
         // renderLoader(elements.searchResList);
         // renderLoader(elements.searchResLeft);       
@@ -44,7 +46,7 @@ const controlSearch = async () => {
         searchView.renderResHourly(state.search.hourly);
         searchView.renderCurrently(state.search.result);
         searchView.renderResDaily(state.search.daily);
-        
+        searchView.renderResDailyBackground(state.search.daily);
     }
 }
 
@@ -61,7 +63,7 @@ elements.searchResPages.addEventListener('click', e => {
         const goToPage = parseInt(btn.dataset.goto, 10);
         searchView.clearResList();
         searchView.renderResHourly(state.search.hourly, goToPage);
-        searchView.updateUnits(state.search.result, state.search.hourly, state.clicked);
+        searchView.updateUnits(state.search.result, state.search.hourly, state.search.daily, state.clicked);
 
 
         // console.log(goToPage);
@@ -80,8 +82,8 @@ elements.changeUnits.addEventListener('click', e => {
         // console.log(state.clicked);
 
         state.search.changeUnits(state.clicked);
-
-        searchView.updateUnits(state.search.result, state.search.hourly, state.clicked);
+        searchView.renderResDailyBackground(state.search.daily);
+        searchView.updateUnits(state.search.result, state.search.hourly, state.search.daily, state.clicked);
         // searchView.clearResults();
         // searchView.renderCurrently(state.search.result);
         // searchView.renderResHourly(state.search.hourly);

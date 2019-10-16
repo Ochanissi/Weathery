@@ -36,6 +36,12 @@ export default class Search {
 
             this.currently.windSpeed *= 0.62137;
 
+            this.daily.forEach(x => {
+                x.windSpeed *= 0.62137;
+            });
+
+            // console.log('1          ' + this.daily[0].windSpeed);
+
         } else {
             // console.log(bool);
 
@@ -46,28 +52,14 @@ export default class Search {
             // console.log(this.hourly[0].temperature);
 
             this.currently.windSpeed /= 0.62137;
+
+            this.daily.forEach(x => {
+                x.windSpeed /= 0.62137;
+            });
+
+            // console.log('2          ' + this.daily[0].windSpeed);
+
         }
-
-
-
-        // // Degrees
-        // const newDegreesCurrently = this.currently.temperature * 9 / 5 + 32;
-        // const newDegreesHourly = this.hourly.temperature.map((x, i) => x[i].temperature  * 9 / 5 + 32);
-
-        // // Speed
-        // const newSpeedCurrently = this.currently.windSpeed * 0.62137;
-        // const newSpeedHourly = this.hourly.windSpeed * 0.62137;
-
-        // this.currently.temperature = newDegreesCurrently;
-        // this.hourly.temperature = newDegreesHourly;
-
-        // this.currently.windSpeed = newSpeedCurrently;
-        // this.hourly.windSpeed = newSpeedHourly;
-        
-        // console.log(this.currently.temperature);
-        // console.log(this.hourly.temperature);
-        // console.log(this.currently.windSpeed);
-        // console.log(this.hourly.windSpeed);
 
     }
 }

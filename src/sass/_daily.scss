@@ -57,19 +57,41 @@
 
             &__image-section {
                 height: 57%;
-                background-image: linear-gradient(
-                    to right bottom, 
-                    rgba($color-grey-dark-1, .5),
-                    rgba($color-grey-dark-2, .5)),
-                    url(/img/background--wi-cloud.jpg);
-            
-            
+                background-image: url(/img/background--wi-cloud.jpg);
+                transition: background-image 1s ease-in-out;
+
                 background-position: center;
                 background-size: cover;
                 width: 100%;
             
                 position: relative;
 
+                &--wi-day-sunny {background-image: url(/img/background--wi-day-sunny.jpg);}
+                &--wi-rain {background-image: url(/img/background--wi-rain.jpg);}
+                &--wi-snow {background-image: url(/img/background--wi-snow.jpg);}
+                &--wi-sleet {background-image: url(/img/background--wi-sleet.jpg);}
+                &--wi-cloudy-windy {background-image: url(/img/background--wi-cloudy-windy.jpg);}
+                &--wi-fog {background-image: url(/img/background--wi-fog.jpg);}
+                &--wi-cloudy {background-image: url(/img/background--wi-cloudy.jpg);}
+                &--wi-day-cloudy {background-image: url(/img/background--wi-day-cloudy.jpg);}
+                &--wi-night-alt-cloudy {background-image: url(/img/background--wi-night-alt-cloudy.jpg);}
+                &--wi-hail {background-image: url(/img/background--wi-hail.jpg);}
+                &--wi-thunderstorm {background-image: url(/img/background--wi-thunderstorm.jpg);}
+                &--wi-tornado {background-image: url(/img/background--wi-tornado.jpg);}
+
+                &:before {
+                    pointer-events: none;
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    bottom: 0;
+                    background-image: linear-gradient(
+                        to right bottom, 
+                        rgba($color-grey-dark-2, .5),
+                        rgba($color-grey-dark-3, .5));
+                }
 
                 &--date {
                     padding-top: .5rem;
@@ -77,7 +99,9 @@
                     justify-content: center;
                     color: $color-white;
                     font-weight: 500;
+                    position: relative;
                     
+                    z-index: 9999;
                 }
 
                 &--icon {
@@ -221,5 +245,3 @@
         }
     }
 }
-
-
