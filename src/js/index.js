@@ -46,7 +46,7 @@ const controlSearch = async () => {
         searchView.renderResHourly(state.search.hourly);
         searchView.renderCurrently(state.search.result);
         searchView.renderResDaily(state.search.daily);
-        searchView.renderResDailyBackground(state.search.daily);
+        searchView.renderDailyHeader(state.search.result);
     }
 }
 
@@ -82,7 +82,6 @@ elements.changeUnits.addEventListener('click', e => {
         // console.log(state.clicked);
 
         state.search.changeUnits(state.clicked);
-        searchView.renderResDailyBackground(state.search.daily);
         searchView.updateUnits(state.search.result, state.search.hourly, state.search.daily, state.clicked);
         // searchView.clearResults();
         // searchView.renderCurrently(state.search.result);

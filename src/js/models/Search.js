@@ -36,11 +36,16 @@ export default class Search {
 
             this.currently.windSpeed *= 0.62137;
 
-            this.daily.forEach(x => {
-                x.windSpeed *= 0.62137;
-            });
 
             // console.log('1          ' + this.daily[0].windSpeed);
+            
+            this.daily.forEach(x => {
+                x.windSpeed *= 0.62137;
+
+                x.temperatureHigh = x.temperatureHigh *  1.8 + 32;
+                x.temperatureLow = x.temperatureLow *  1.8 + 32;
+            });
+
 
         } else {
             // console.log(bool);
@@ -53,11 +58,17 @@ export default class Search {
 
             this.currently.windSpeed /= 0.62137;
 
-            this.daily.forEach(x => {
-                x.windSpeed /= 0.62137;
-            });
+
 
             // console.log('2          ' + this.daily[0].windSpeed);
+
+
+            this.daily.forEach(x => {
+                x.windSpeed /= 0.62137;
+
+                x.temperatureHigh = (x.temperatureHigh - 32) / 9 / 5;
+                x.temperatureLow = (x.temperatureLow - 32) / 9 / 5;
+            });
 
         }
 
