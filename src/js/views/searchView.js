@@ -190,6 +190,21 @@ const renderDailyBackground = daily => {
     
 };
 
+export const renderDailyHeader = result => {
+    const markupTitle = `
+        <h3 class="heading-3">8-Day Weather Forecast</h3>
+    `;
+
+    const markupSummary = `
+        <p class="daily__summary--text daily__summary--text-1">Be prepared with the most accurate 8-day forecast for with highs, lows, chance of precipitation from Weathery!</p>
+        <p class="daily__summary--text daily__summary--text-2">${result.daily.summary}</p>
+    `;
+
+    elements.searchDailyTitle.insertAdjacentHTML('afterbegin', markupTitle);
+    elements.searchDailySummary.insertAdjacentHTML('beforeend', markupSummary);
+
+}
+
 const renderDaily = daily => {
     getIcons(daily);
 
@@ -245,11 +260,6 @@ const renderDaily = daily => {
 export const renderResDaily = daily => {
 
     daily.slice(0, daily.length).forEach(renderDaily);
-
-};
-
-export const renderResDailyBackground = daily => {
-
     daily.slice(0, daily.length).forEach(renderDailyBackground);
 
 };
@@ -262,6 +272,9 @@ export const updateUnits = (result, hourly, daily, bool, page = 1, resPerPage = 
     const end = page * resPerPage;
     const classes = document.getElementsByClassName('header__bottom--day--temp');
     const dailyWind = document.getElementsByClassName('weather-card__image-section--wind--text');
+    const dailyTemp = document.getElementsByClassName('weather-card__info-section--contents--temperature');
+    const dailyTempMin = document.getElementsByClassName('weather-card__info-section--contents--min');
+    const dailyTempMax = document.getElementsByClassName('weather-card__info-section--contents--max');
 
     hourly.slice(start, end).forEach((x, i) => {
         classes[i].textContent = `${Math.round(x.temperature)} °${bool ? 'F' : 'C'}`;
@@ -269,6 +282,9 @@ export const updateUnits = (result, hourly, daily, bool, page = 1, resPerPage = 
 
     daily.slice(0, daily.length).forEach((x, i) => {
         dailyWind[i].textContent = `${x.windSpeed.toFixed(2)} ${bool ? 'mi' : 'km'}/h`;
+        dailyTemp[i].textContent = `${Math.round((x.temperatureHigh + x.temperatureLow) / 2)} °${bool ? 'F' : 'C'}`;
+        dailyTempMin[i].textContent = `${Math.round(x.temperatureHigh)} °${bool ? 'F' : 'C'}`;
+        dailyTempMax[i].textContent = `${Math.round(x.temperatureHigh)} °${bool ? 'F' : 'C'}`;
     });
 
     // console.log('kek ' + daily[0].windSpeed.toFixed(2)) ;

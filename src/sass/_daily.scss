@@ -18,21 +18,32 @@
         grid-row: 1 / 2;
         grid-column: center-start / center-end;
 
+        & h3 {
+        margin-top: 5rem;
         margin-bottom: 5rem;
+        }
     }
 
     &__summary {
         grid-row: 2 / 3;
         grid-column: center-start / center-end;
 
-        margin-bottom: 5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & p {
+            margin-bottom: 5rem;
+            font-size: 2rem;
+            font-weight: 500;
+        }
     }
 
     &__days {
         grid-row: 3 / 4;
         grid-column: center-start / center-end;
 
-        margin-bottom: 5rem;
+        // margin-bottom: 5rem;
 
         display: grid;
         grid-template-columns: repeat(4, 1fr);

@@ -9,6 +9,8 @@ export const elements = {
     searchResLeft: document.querySelector('.header__left'),
     searchResRight: document.querySelector('.header__right--blocks'),
     searchResDaily: document.querySelector('.daily__days'),
+    searchDailyTitle: document.querySelector('.daily__title'),
+    searchDailySummary: document.querySelector('.daily__summary'),
     changeUnits: document.querySelector('.header__top--btns--change')
 };
 
