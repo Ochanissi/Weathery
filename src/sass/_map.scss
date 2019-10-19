@@ -14,4 +14,29 @@
     align-items: center;
 
     // margin-top: 5rem;
+
+    &__title {
+        grid-row: 1 / 2;
+        grid-column: center-start / center-end;
+
+        & h3 {
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+        }
+    }
+
+    &__summary {
+        grid-row: 2 / 3;
+        grid-column: center-start / center-end;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & p {
+            margin-bottom: 5rem;
+            font-size: 2rem;
+            font-weight: 500;
+        }
+    }
 }
