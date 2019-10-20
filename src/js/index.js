@@ -1,4 +1,5 @@
 import Search from './models/Search';
+import Geocode from './models/Geocode';
 import * as searchView from './views/searchView';
 import { elements, renderLoader, clearLoader } from './views/base';
 
@@ -88,4 +89,50 @@ elements.changeUnits.addEventListener('click', e => {
         // searchView.renderResHourly(state.search.hourly);
     }
 
+});
+
+
+// ---------------------------------
+// GEOCODE CONTROLLER
+// ---------------------------------
+const controlGeocode = async () => {
+    // 1. Get the query from the view
+    const query_city = 'Bucharest'; // TODO 
+    // const query_lat = searchView.getInput_lat();
+
+    if (query_city) {
+        // 2. New search object and add to state
+        state.geocode = new Geocode(query_city);
+
+        // 3. Prepare UI for results
+        // searchView.clearInput();
+        // searchView.clearResults();
+        // searchView.clearResList();
+        // searchView.clearResDaily();
+        // [elements.searchResList, elements.searchResLeft, elements.searchResRight, elements.searchResDaily].forEach(event => renderLoader(event));
+        // renderLoader(elements.searchResList);
+        // renderLoader(elements.searchResLeft);       
+        // renderLoader(elements.searchResRight);       
+
+        // 4. Search for recipes
+        await state.geocode.getResults();
+
+        // 5. Render results on UI
+        console.log(state.geocode);
+        // console.log(state.search.result);
+        // [elements.searchResList, elements.searchResLeft, elements.searchResRight, elements.searchResDaily].forEach(event => clearLoader(event));
+        // clearLoader(elements.searchResList);
+        // clearLoader(elements.searchResLeft);
+        // clearLoader(elements.searchResRight);
+        // searchView.renderBackgroundImage(state.search.result);
+        // searchView.renderResHourly(state.search.hourly);
+        // searchView.renderCurrently(state.search.result);
+        // searchView.renderResDaily(state.search.daily);
+        // searchView.renderDailyHeader(state.search.result);
+    }
+}
+
+elements.geocodeForm.addEventListener('submit', e => {
+    e.preventDefault();
+    controlGeocode();
 });
