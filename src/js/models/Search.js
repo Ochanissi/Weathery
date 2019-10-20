@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { key, proxy } from '../config';
+import { keyDarkSky, proxy } from '../config';
 
 export default class Search {
     constructor(query_lat, query_long) {
@@ -9,7 +9,7 @@ export default class Search {
 
     async getResults() {
         try {
-            const res = await axios(`${proxy}https://api.darksky.net/forecast/${key}/${this.query_lat},${this.query_long}?units=si&exclude=minutely,flags,alerts`);
+            const res = await axios(`${proxy}https://api.darksky.net/forecast/${keyDarkSky}/${this.query_lat},${this.query_long}?units=si&exclude=minutely,flags,alerts`);
             console.log(res);
             this.result = res.data;
             console.log(this.result);
@@ -74,6 +74,3 @@ export default class Search {
 
     }
 }
-
-
-

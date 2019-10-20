@@ -11,7 +11,8 @@ export const elements = {
     searchResDaily: document.querySelector('.daily__days'),
     searchDailyTitle: document.querySelector('.daily__title'),
     searchDailySummary: document.querySelector('.daily__summary'),
-    changeUnits: document.querySelector('.header__top--btns--change')
+    changeUnits: document.querySelector('.header__top--btns--change'),
+    geocodeForm: document.querySelector('.header__top--search-city')
 };
 
 export const elementStrings = {
