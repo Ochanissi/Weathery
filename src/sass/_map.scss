@@ -13,7 +13,7 @@
     justify-items: center;
     align-items: center;
 
-    // margin-top: 5rem;
+    margin-top: 5rem;
 
     &__title {
         grid-row: 1 / 2;
@@ -37,6 +37,16 @@
             margin-bottom: 5rem;
             font-size: 2rem;
             font-weight: 500;
+            text-align: center;
+
         }
+    }
+
+    &__api {
+        height: 80rem;
+        width: 100%;
+
+        grid-row: 3 / 4;
+        grid-column: center-start / center-end;
     }
 }
