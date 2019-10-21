@@ -18,18 +18,28 @@ google.maps.event.addListener(map, 'click', e => {
     // Add marker
     addMarker(e.latLng);
 
+    infoWindow.setPosition();
 });
 
 
-export const addMarker = coords => new google.maps.Marker({
-    position: coords,
-    map: map
-});
+export const addMarker = coords => {
+    new google.maps.Marker({
+        position: coords,
+        map: map
+})
+    infoWindow.setPosition(coords);
+    map.setCenter(coords);
+    infoWindow.setContent('<h2>Searched Location</h2>');
+    infoWindow.open(map);
+    console.log(coords);
+};
 
 // ----------------------------
 
 
 const infoWindow = new google.maps.InfoWindow();
+const infoWindowHome = new google.maps.InfoWindow();
+
 
 if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(p => {
@@ -37,15 +47,18 @@ if(navigator.geolocation) {
             lat: p.coords.latitude,
             lng: p.coords.longitude
         };
-        infoWindow.setPosition(position);
-        infoWindow.setContent('<h1>Your Location!</h1>');
-        infoWindow.open(map);
+        infoWindowHome.setPosition(position);
+        infoWindowHome.setContent('<h1>Your Location!</h1>');
+        infoWindowHome.open(map);
+        console.log(position);
     }, () => {
         handleLocationError('Geolocation service failed', map.center());
     })
 } else {
     handleLocationError('No geolocation available', map.center());
 }
+
+
 
 
 const handleLocationError = (content, position) => {
