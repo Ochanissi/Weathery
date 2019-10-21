@@ -1,5 +1,6 @@
 import Search from './models/Search';
 import Geocode from './models/Geocode';
+import * as Maps from './models/Maps';
 import * as searchView from './views/searchView';
 import { elements, renderLoader, clearLoader } from './views/base';
 
@@ -23,6 +24,11 @@ const controlSearch = async () => {
     if (query_lat && query_long) {
         // 2. New search object and add to state
         state.search = new Search(query_lat, query_long);
+
+
+        // Maps.options.center = {query_lat, query_long};
+
+        // console.log(Maps.options.center);
 
         // 3. Prepare UI for results
         searchView.clearInput();
@@ -48,6 +54,11 @@ const controlSearch = async () => {
         searchView.renderCurrently(state.search.result);
         searchView.renderResDaily(state.search.daily);
         searchView.renderDailyHeader(state.search.result);
+
+        Maps.addMarker({lat: parseFloat(state.search.query_lat), lng: parseFloat(state.search.query_long)});
+
+        Maps.myLatLng(parseFloat(state.search.query_lat), parseFloat(state.search.query_long));
+
     }
 }
 
@@ -136,3 +147,6 @@ elements.geocodeForm.addEventListener('submit', e => {
     e.preventDefault();
     controlGeocode();
 });
+
+
+
