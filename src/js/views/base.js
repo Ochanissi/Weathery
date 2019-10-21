@@ -12,7 +12,8 @@ export const elements = {
     searchDailyTitle: document.querySelector('.daily__title'),
     searchDailySummary: document.querySelector('.daily__summary'),
     changeUnits: document.querySelector('.header__top--btns--change'),
-    geocodeForm: document.querySelector('.header__top--search-city')
+    geocodeForm: document.querySelector('.header__top--search-city'),
+    maps: document.getElementById('map'),
 };
 
 export const elementStrings = {
