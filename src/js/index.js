@@ -57,7 +57,7 @@ const controlSearch = async () => {
 
         Maps.addMarker({lat: parseFloat(state.search.query_lat), lng: parseFloat(state.search.query_long)});
 
-        Maps.myLatLng(parseFloat(state.search.query_lat), parseFloat(state.search.query_long));
+        // Maps.myLatLng(parseFloat(state.search.query_lat), parseFloat(state.search.query_long));
 
     }
 }
