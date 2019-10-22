@@ -105,7 +105,7 @@ elements.changeUnits.addEventListener('click', e => {
 const controlGeocode = async () => {
     // 1. Get the query from the view
     const query_city = 'Bucharest'; // TODO 
-    // const query_lat = searchView.getInput_lat();
+    // const query_city = geocodeView.getInput_location();
 
     if (query_city) {
         // 2. New search object and add to state
@@ -126,8 +126,10 @@ const controlGeocode = async () => {
         // console.log(state.geocode.resLocation[0].long);
         // // 5. Render results on UI
         // console.log("       " + state.geocode.resLocation);        
-        // console.log("       " + state);        
-        geocodeView.renderLocation(state.geocode.resLocationCity, state.geocode.resLocationCountry);
+        // console.log("       " + state); 
+        
+        
+        geocodeView.renderLocation(state.geocode.resLocation);
 
         geocodeView.renderCoords(state.geocode.resCoords);
 
