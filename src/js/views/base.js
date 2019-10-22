@@ -13,7 +13,8 @@ export const elements = {
     searchDailySummary: document.querySelector('.daily__summary'),
     changeUnits: document.querySelector('.header__top--btns--change'),
     geocodeForm: document.querySelector('.header__top--search-city'),
-    maps: document.getElementById('map'),
+    searchInput_location: document.querySelector('.header__top--search--input-location'),
+    maps: document.getElementById('map')
 };
 
 export const elementStrings = {
