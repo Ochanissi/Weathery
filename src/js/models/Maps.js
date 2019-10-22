@@ -50,7 +50,7 @@ if(navigator.geolocation) {
         infoWindowHome.setPosition(position);
         infoWindowHome.setContent('<h1>Your Location!</h1>');
         infoWindowHome.open(map);
-        console.log(position);
+        // console.log(position);
     }, () => {
         handleLocationError('Geolocation service failed', map.center());
     })

@@ -2,6 +2,7 @@ import Search from './models/Search';
 import Geocode from './models/Geocode';
 import * as Maps from './models/Maps';
 import * as searchView from './views/searchView';
+import * as geocodeView from './views/geocodeView';
 import { elements, renderLoader, clearLoader } from './views/base';
 
 // Global state of the app
@@ -9,7 +10,7 @@ import { elements, renderLoader, clearLoader } from './views/base';
 // - Current recipe object
 // - Liked recipes
 const state = {};
-console.log(state);
+// console.log(state);
 
 // ---------------------------------
 // SEARCH CONTROLLER
@@ -24,11 +25,6 @@ const controlSearch = async () => {
     if (query_lat && query_long) {
         // 2. New search object and add to state
         state.search = new Search(query_lat, query_long);
-
-
-        // Maps.options.center = {query_lat, query_long};
-
-        // console.log(Maps.options.center);
 
         // 3. Prepare UI for results
         searchView.clearInput();
@@ -114,7 +110,6 @@ const controlGeocode = async () => {
     if (query_city) {
         // 2. New search object and add to state
         state.geocode = new Geocode(query_city);
-
         // 3. Prepare UI for results
         // searchView.clearInput();
         // searchView.clearResults();
@@ -127,10 +122,25 @@ const controlGeocode = async () => {
 
         // 4. Search for recipes
         await state.geocode.getResults();
+        // state.search = new Search(state.geocode.resLocation.lat, state.geocode.resLocation.long);
+        // console.log(state.geocode.resLocation[0].long);
+        // // 5. Render results on UI
+        // console.log("       " + state.geocode.resLocation);        
+        // console.log("       " + state);        
+        geocodeView.renderLocation(state.geocode.resLocationCity, state.geocode.resLocationCountry);
 
-        // 5. Render results on UI
-        console.log(state.geocode);
-        // console.log(state.search.result);
+        geocodeView.renderCoords(state.geocode.resCoords);
+
+        state.search = new Search(state.geocode.resCoords.lat, state.geocode.resCoords.lng);
+
+
+        console.log(state.search);
+
+        await state.search.getResults();
+
+        searchView.renderCurrently(state.search.result);
+
+
         // [elements.searchResList, elements.searchResLeft, elements.searchResRight, elements.searchResDaily].forEach(event => clearLoader(event));
         // clearLoader(elements.searchResList);
         // clearLoader(elements.searchResLeft);
