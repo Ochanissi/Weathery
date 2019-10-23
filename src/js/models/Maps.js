@@ -1,5 +1,5 @@
-import { state } from '../index';
 import { elements } from '../views/base';
+import { controlSearch } from '../index';
 
 export const myLatLng  = new google.maps.LatLng(44.439663, 26.096306);
 
@@ -36,7 +36,6 @@ export const addMarker = coords => {
 
 // ----------------------------
 
-
 const infoWindow = new google.maps.InfoWindow();
 const infoWindowHome = new google.maps.InfoWindow();
 
@@ -50,7 +49,12 @@ if(navigator.geolocation) {
         infoWindowHome.setPosition(position);
         infoWindowHome.setContent('<h1>Your Location!</h1>');
         infoWindowHome.open(map);
-        // console.log(position);
+
+        // getInput_lat(position.lat);
+        // getInput_long(position.lng);
+        controlSearch(position.lat, position.lng);
+
+
     }, () => {
         handleLocationError('Geolocation service failed', map.center());
     })
@@ -59,10 +63,16 @@ if(navigator.geolocation) {
 }
 
 
-
-
 const handleLocationError = (content, position) => {
     infoWindow.setPosition(position);
     infoWindow.setContent(content);
     infoWindow.open(map);
+
 }
+
+// console.log(navigator.geolocation.position);
+// export const getInput_lat = lat => lat;
+// export const getInput_long = lng => lng;
+
+// export const getInput_lat = () => position.lat;
+// export const getInput_long = () => position.lng;

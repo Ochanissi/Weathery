@@ -12,13 +12,13 @@ export default class Search {
             const res = await axios(`${proxy}https://api.darksky.net/forecast/${keyDarkSky}/${this.query_lat},${this.query_long}?units=si&exclude=minutely,flags,alerts`);
             console.log(res);
             this.result = res.data;
-            console.log(this.result);
+            // console.log(this.result);
             this.currently = res.data.currently;
             // console.log(this.result.currently);
             this.hourly = res.data.hourly.data;
             // console.log(this.result.hourly.data);
             this.daily = res.data.daily.data;
-            console.log(this.result.daily.data);
+            // console.log(this.result.daily.data);
         } catch (error) {
             alert(error);
         }

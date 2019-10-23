@@ -22,6 +22,8 @@ export const clearResList = () => {
 
 export const clearResDaily = () => {
     elements.searchResDaily.innerHTML ='';
+    elements.searchDailyTitle.innerHTML ='';
+    elements.searchDailySummary.innerHTML ='';
 };
 
 const getIcons = (data) => {
@@ -78,13 +80,13 @@ export const renderBackgroundImage = result => {
     `;
 };
 
-export const renderCurrently = result => {
+export const renderCurrently = (result, location) => {
 
 
     const markupLeft = `
         <div class="header__left--icon"><i class="wi ${result.currently.icon}"></i></div>
         <div class="header__left--summary">${result.currently.summary}</div>
-        <div class="header__left--city">${result.timezone.split("/").reverse().join(" - ").replace(/[_]/gi,' ')}</div>
+        <div class="header__left--city">${location}</div>
         <div class="header__left--temp">${Math.round(result.currently.temperature)} &deg;C</div>
     `;
     elements.searchResLeft.insertAdjacentHTML('afterbegin', markupLeft);
