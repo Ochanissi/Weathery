@@ -2,6 +2,10 @@ import { elements } from './base';
 
 export const getInput_location = () => elements.searchInput_location.value;
 
+export const clearInput = () => {
+    elements.searchInput_location.value = '';
+};
+
 export const renderLocation = (location) => {
     const loc = location.split(" ");
     const locX = loc[0] + " - " + loc[loc.length - 1];
