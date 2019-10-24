@@ -50,6 +50,9 @@ export const controlSearch = async (lat, lng) => {
         await state.search.getResults();
         await state.reverseGeocode.getResults();
 
+
+
+
         // 5. Render results on UI
         [elements.searchResList, elements.searchResLeft, elements.searchResRight, elements.searchResDaily].forEach(event => clearLoader(event));
         searchView.renderBackgroundImage(state.search.result);
@@ -58,7 +61,8 @@ export const controlSearch = async (lat, lng) => {
         searchView.renderResDaily(state.search.daily);
         searchView.renderDailyHeader(state.search.result);
 
-        Maps.addMarker({lat: parseFloat(state.search.query_lat), lng: parseFloat(state.search.query_long)});
+        Maps.addMarker({lat: parseFloat(state.search.query_lat), lng: parseFloat(state.search.query_long)}, state.search.result, state.reverseGeocode.resLocation);
+
 
     }
 }
@@ -141,6 +145,3 @@ elements.geocodeForm.addEventListener('submit', e => {
     e.preventDefault();
     controlGeocode();
 });
-
-
-

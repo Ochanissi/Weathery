@@ -50,4 +50,32 @@
         grid-column: center-start / center-end;
     }
 
+    &__infoWindow {
+        max-width: 15rem;
+
+        text-align: center;
+
+        z-index: 999;
+
+        &--icon {
+            font-size: 2.5rem;
+            font-weight: 500;
+        }
+
+        &--summary {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        &--city {
+
+        }
+
+        &--temp {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+    }
+
 }
