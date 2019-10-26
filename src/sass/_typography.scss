@@ -85,7 +85,7 @@
     padding: 0 2rem;
     border: 2px solid $color-white;
     color: $color-white;
-    // background: $color-grey-dark-1;
+    background: $color-grey-dark-1;
     font-family: $font-display;
     font-weight: 700;
     text-transform: uppercase;
@@ -98,131 +98,17 @@
 
     
     &:hover {
-      background: $color-primary;
-      border: 2px solid $color-primary-dark;
+      background: $color-grey-dark-2;
+      border: 2px solid $color-grey-dark-3;
       color: #fefefe;
 
       & ion-icon {
         // transform: rotate(90deg) translate(0, 0);
-        transform: rotate(90deg) translate(-3px, 0);
-
-        
+        transform: rotate(90deg) translate(-3px, 0);    
       }
     }
 
     
-}
-
-.btn__card,
-.btn__card:link,
-.btn__card:visited {
-    padding: .8rem 1.4rem;
-    border: 2px solid $color-grey-dark-1;
-    color: $color-grey-dark-1;
-    font-family: $font-display;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: 1.5rem;
-    letter-spacing: .4rem;
-    cursor: pointer;
-    transition: all .5s ease-in-out;
-
-    
-    &:hover {
-      background: $color-primary;
-      border: 2px solid $color-primary-dark;
-      color: $color-white;
-
-      & ion-icon {
-        transform: none;
-
-      }
-    }
-
-    
-}
-
-.btn__contact,
-.btn__contact:link,
-.btn__contact:visited {
-    padding: .8rem 1.4rem;
-    border: 2px solid $color-white;
-    color: $color-white;
-    font-family: $font-display;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: 3rem;
-    letter-spacing: .4rem;
-    cursor: pointer;
-    transition: all .5s ease-in-out;
-
-    
-    &:hover {
-      background: $color-primary;
-      border: 2px solid $color-primary-dark;
-      color: $color-white;
-
-      & ion-icon {
-        transform: none;
-      }
-    }
-}
-
-.btn__footer,
-.btn__footer:link,
-.btn__footer:visited {
-    padding: .5rem 1rem;
-    border: 3px solid $color-secondary-dark;
-    color: $color-white;
-    background: $color-secondary;
-    font-family: $font-display;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: 3rem;
-    letter-spacing: .4rem;
-    cursor: pointer;
-    transition: all .5s ease-in-out;
-
-    
-    &:hover {
-      background: $color-secondary-dark;
-      border: 3px solid $color-secondary-darker;
-      color: $color-grey-light-2;
-
-      & ion-icon {
-        transform: rotate(-90deg) scale(1.1);
-        
-      }
-    }
-}
-
-
-
-.btn__icon {
-    &-arrow {
-        font-weight: 700;
-        padding-left: 1rem;
-        font-size: 2rem;
-        transition: all .3s linear;
-        line-height: 25px;
-    }
-
-    &-gihub {
-        padding-left: 1rem;
-
-    }
-
-    &-rocket {
-        padding-left: 1rem;
-
-    }
-
-    &-home {
-        transform: rotate(-90deg);
-    }
 }
 
 .loader {
