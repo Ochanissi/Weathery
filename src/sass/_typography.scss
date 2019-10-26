@@ -96,19 +96,24 @@
     transition: all .5s ease-in-out;
     height: 3.5rem;
 
+
     
     &:hover {
       background: $color-grey-dark-2;
       border: 2px solid $color-grey-dark-3;
-      color: #fefefe;
+      color: $color-white;
 
       & ion-icon {
         // transform: rotate(90deg) translate(0, 0);
         transform: rotate(90deg) translate(-3px, 0);    
       }
-    }
+    }   
+}
 
-    
+.btn-map {
+    display: block;
+    display: flex;
+    align-items: center;
 }
 
 .loader {
