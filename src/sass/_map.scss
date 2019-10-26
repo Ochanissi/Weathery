@@ -1,5 +1,6 @@
 .map  {
-    background-color: orangered;
+    // background-color: orangered;
+    background-color: $color-grey-light-2;
 
     grid-column: full-start / full-end;
 
@@ -48,6 +49,8 @@
 
         grid-row: 3 / 4;
         grid-column: center-start / center-end;
+
+        margin-bottom: 5rem;
     }
 
     &__infoWindow {

@@ -1,10 +1,11 @@
 .footer  {
-    background-color: blueviolet;
+    // background-color: blueviolet;
+    background-color: $color-grey-dark-2;
 
     grid-column: full-start / full-end;
 
     display: grid;
-    grid-template-rows: repeat(4, min-content);
+    grid-template-rows: repeat(3, min-content);
     grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end] ) [center-end] minmax(6rem, 1fr) [full-end];
 
     
@@ -12,4 +13,108 @@
     align-content: center;
     justify-items: center;
     align-items: center;
+
+    padding-top: 5rem;
+
+    grid-gap: 7.5rem;
+
+    &__title {
+        grid-column: center-start / center-end;
+        grid-row: 1 / 2;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        &--icon {
+            font-size: 10rem;
+            height: 12rem;
+
+        }
+
+        &--header {
+            font-size: 4rem;
+            text-transform: uppercase;
+        }
+    }
+
+    &__content {
+        grid-column: center-start / center-end;
+        grid-row: 2 / 3;
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: space-between;
+        grid-gap: 26rem;
+
+        &--navigation {
+            border-top: 1px solid $color-grey-dark-3;
+            padding-top: 2rem;
+            display: inline-block;
+
+            &--list {
+                list-style: none;
+                display: flex;
+                justify-content: space-between;
+
+                &--item {
+                    &:not(:last-child) {
+                        margin-right: 1.5rem;
+                    }    
+
+                    &--link {
+                        &:link,
+                        &:visited {
+                            color: $color-white;
+                            text-decoration: none;
+                            text-transform: uppercase;
+                            display: inline-block;
+                            transition: all .2s;
+                
+                        }
+                
+                        &:hover,
+                        &:active {
+                            border-bottom: 1px solid;
+                            transform: scale(1.1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &--copyright {
+            border-top: 1px solid $color-grey-dark-3;
+            padding-top: 2rem;
+            width: 100%;
+            text-align: center;
+
+
+        }
+    }
+
+    &__copyright {
+        grid-column: center-start / center-end;
+        grid-row: 3 / 4;
+
+
+        padding: 3rem 0;
+
+        &--name {
+            color: $color-secondary;
+        }
+
+        &--link:link,
+        &--link:visited {
+            color: $color-primary;
+            text-decoration: none;
+        }
+
+        &--link-secondary:link,
+        &--link-secondary:visited {
+            color: $color-grey-light-3;
+            text-decoration: none;
+        }
+    }
 }

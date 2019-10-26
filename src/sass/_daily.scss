@@ -1,5 +1,6 @@
 .daily  {
-    background-color: greenyellow;
+    // background-color: greenyellow;
+    background-color: $color-white;
 
     grid-column: full-start / full-end;
 
@@ -64,7 +65,7 @@
             height: 45rem;
             width: 30rem;
             border-radius: 3rem;
-            box-shadow: 1.5rem 2rem 8.5rem $color-grey-dark-2;
+            box-shadow: 1.5rem 2rem 8.5rem $color-grey-dark-1;
             overflow: hidden;
 
             &__image-section {
