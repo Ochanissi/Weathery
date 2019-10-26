@@ -47,9 +47,9 @@
                     </button>
                 </div>
                 <div class="header__top--btns--map">
-                    <button class="btn">
+                    <a class="btn btn-map" href="#map-header">
                         <span>Pinpoint on map</span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -144,7 +144,7 @@
 
     </header>
 
-    <section class="daily">
+    <section class="daily" id="daily">
         <div class="daily__title">
             <!-- <h3 class="heading-3">8-Day Weather Forecast</h3>   -->
         </div>
@@ -186,7 +186,7 @@
         </article> -->
     </section>
 
-    <div class="map">
+    <div class="map" id="map-header">
         <div class="map__title">
             <h3 class="heading-3">Pinpoint on map</h3>  
         </div>
@@ -208,7 +208,7 @@
     
     <div class="footer">
         <div class="footer__title">
-            <div class="footer__title--icon"><i class="wi wi-day-cloudy"></i></div>
+            <a class="footer__title--icon" href="#header"><i class="wi wi-day-cloudy"></i></a>
             <h1 class="footer__title--header">Weathery</h1>
         </div>
         <div class="footer__content">
@@ -230,14 +230,15 @@
     </div>
 
     
-    <script>
-    
-    // &callback=initMap
-
-    // function initMap() {}
-    </script>   
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOejuIMnoif-vg-a7KaoEyEXaLrS1yidQ"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="js/smooth-scroll.polyfills.min.js"></script>
+    <script>
+        var scroll = new SmoothScroll('a[href*="#"]', {
+            speed: 800,
+            speedAsDuration: true
+        });
+    </script>
 </body>
 
 </html>
