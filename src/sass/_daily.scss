@@ -51,14 +51,20 @@
         grid-template-columns: repeat(4, 1fr);
         
         justify-content: center;
-        align-content: center;
-        justify-items: center;
-        align-items: center;
+        // align-content: center;
+        // justify-items: center;
+        // align-items: center;
         
         text-align: center;
         
         grid-gap: 5rem;
         padding: 0 2rem;
+
+
+        @media only screen and (max-width: $bp-large) {
+            grid-template-columns: repeat(2, 1fr);
+   
+        }
 
 
         .weather-card {
