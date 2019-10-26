@@ -185,6 +185,10 @@
 
         margin: 5rem;
 
+        @media only screen and (max-width: $bp-medium) {
+            margin: 5rem 0; 
+        }
+
         &--page {
             display: flex;
             flex-direction: row-reverse;
@@ -194,12 +198,21 @@
                 margin-left: 1rem;
             }
 
+            @media only screen and (max-width: $bp-medium) {
+                padding-right: 5rem; 
+            }
+
         }
 
         &--days {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+
+            @media only screen and (max-width: $bp-medium) {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
         &--day {

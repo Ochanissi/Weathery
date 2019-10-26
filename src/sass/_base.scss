@@ -28,8 +28,8 @@ $font-display: 'Montserrat', sans-serif;
 
 // RESPONSIVE BREAKPOINTS
 $bp-largest: 93.75em; // 1500px
-$bp-large: 75em; // 1000px
-$bp-medium: 53.12em; // 850px
+$bp-large: 75em; // 1200px
+$bp-medium: 50em; // 800px
 $bp-small: 43.75em; // 700px
 $bp-smallest: 31.25em; // 500px
 $bp-phone: 25em; // 400px
@@ -75,6 +75,10 @@ body {
     [center-end] minmax(max-content, 14rem) [full-end];
 
 
+    @media only screen and (max-width: $bp-medium) {
+        grid-template-rows: repeat(4, min-content);
+
+    }
 
     & > * {
         // padding: 40px;
