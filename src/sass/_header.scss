@@ -33,11 +33,12 @@
         grid-template-rows: repeat(3, max-content);
         grid-template-columns: [full-start] minmax(max-content, 14rem) [center-start]
         minmax(6rem, 1fr)
-        repeat(2, [col-start] minmax(max-content, 7rem) [col-end])
+        repeat(2, [col-start] minmax(max-content, min-content) [col-end])
         minmax(6rem, 1fr)
         [center-end] minmax(max-content, 14rem) [full-end];
         
     }
+
 
     &:before {
         pointer-events: none;
@@ -139,6 +140,10 @@
                 box-sizing: border-box;
                 transition: 0.3s;
                 padding-left: 4rem;
+
+                display: flex;
+                flex: 1;
+                width: 100%;
 
                 &:focus {
                     border-color: $color-grey-dark-2;
