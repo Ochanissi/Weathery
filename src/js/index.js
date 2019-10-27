@@ -79,7 +79,7 @@ elements.searchResPages.addEventListener('click', e => {
         const goToPage = parseInt(btn.dataset.goto, 10);
         searchView.clearResList();
         searchView.renderResHourly(state.search.hourly, goToPage);
-        searchView.updateUnits(state.search.result, state.search.hourly, state.search.daily, state.clicked);
+        searchView.updateUnits(state.search.result, state.search.hourly, state.search.daily, state.clicked, goToPage);
     }
     
 });
