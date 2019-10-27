@@ -81,12 +81,22 @@ export const renderBackgroundImage = result => {
 };
 
 export const renderCurrently = (result, location) => {
+    
+    let formattedLocation = location.replace(/[0-9]|^ /gi, "").split(", ");
 
+    if (formattedLocation[formattedLocation.length - 1].length < 1) {
+        formattedLocation = formattedLocation.slice(-3).join(" ");
+    } else {
+        formattedLocation = formattedLocation.slice(-2).join(" ");
+    }
+
+    console.log(location);
+    console.log(formattedLocation);
 
     const markupLeft = `
         <div class="header__left--icon"><i class="wi ${result.currently.icon}"></i></div>
         <div class="header__left--summary">${result.currently.summary}</div>
-        <div class="header__left--city">${location}</div>
+        <div class="header__left--city">${formattedLocation}</div>
         <div class="header__left--temp">${Math.round(result.currently.temperature)} &deg;C</div>
     `;
     elements.searchResLeft.insertAdjacentHTML('afterbegin', markupLeft);
