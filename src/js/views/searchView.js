@@ -124,13 +124,17 @@ export const renderCurrently = (result, location) => {
     elements.searchResRight.insertAdjacentHTML('afterbegin', markupRight);
 };
 
-const renderHourly = hourly => {
+const renderHourly = (hourly, bool) => {
     getIcons(hourly);
 
     const date = new Date(hourly.time * 1000);
     const hours = date.getHours();
     const mins = "0" + date.getMinutes();
     const secs = "0" + date.getSeconds();
+
+    console.log('temp ' + hourly.temperature);
+    // console.log('precip ' + hourly.precipProbability * 100);
+    // ${Math.round(hourly.temperature)}
 
     const markup = `
         <li class="header__bottom--day">
@@ -285,8 +289,8 @@ export const updateUnits = (result, hourly, daily, bool, page = 1, resPerPage = 
     daily.slice(0, daily.length).forEach((x, i) => {
         dailyWind[i].textContent = `${x.windSpeed.toFixed(2)} ${bool ? 'mi' : 'km'}/h`;
         dailyTemp[i].textContent = `${Math.round((x.temperatureHigh + x.temperatureLow) / 2)} °${bool ? 'F' : 'C'}`;
-        dailyTempMin[i].textContent = `${Math.round(x.temperatureHigh)} °${bool ? 'F' : 'C'}`;
-        dailyTempMax[i].textContent = `${Math.round(x.temperatureHigh)} °${bool ? 'F' : 'C'}`;
+        dailyTempMin[i].textContent = `Min: ${Math.round(x.temperatureHigh)} °${bool ? 'F' : 'C'}`;
+        dailyTempMax[i].textContent = `Max: ${Math.round(x.temperatureHigh)} °${bool ? 'F' : 'C'}`;
     });
 
     // console.log('kek ' + daily[0].windSpeed.toFixed(2)) ;
