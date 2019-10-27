@@ -28,7 +28,7 @@ export default class Search {
         if (bool) {
             // console.log(bool);
 
-            this.currently.temperature = this.currently.temperature * 9 / 5 + 32;
+            this.currently.temperature = this.currently.temperature *  1.8 + 32;
             this.hourly.forEach(x => {
                 x.temperature = x.temperature *  1.8 + 32;
             });
@@ -50,7 +50,7 @@ export default class Search {
         } else {
             // console.log(bool);
 
-            this.currently.temperature = (this.currently.temperature - 32) / 9 / 5;
+            this.currently.temperature = (this.currently.temperature - 32) / 1.8;
             this.hourly.forEach(x => {
                 x.temperature = (x.temperature - 32) / 1.8;
             });
@@ -66,8 +66,8 @@ export default class Search {
             this.daily.forEach(x => {
                 x.windSpeed /= 0.62137;
 
-                x.temperatureHigh = (x.temperatureHigh - 32) / 9 / 5;
-                x.temperatureLow = (x.temperatureLow - 32) / 9 / 5;
+                x.temperatureHigh = (x.temperatureHigh - 32) / 1.8;
+                x.temperatureLow = (x.temperatureLow - 32) / 1.8;
             });
 
         }
