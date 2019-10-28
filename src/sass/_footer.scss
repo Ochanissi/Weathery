@@ -67,6 +67,11 @@
 
         }
 
+        @media only screen and (max-width: $bp-small) {
+            grid-template-columns: repeat(1, 1fr);
+   
+        }
+
         &--navigation {
             border-top: 1px solid $color-grey-dark-3;
             padding-top: 2rem;

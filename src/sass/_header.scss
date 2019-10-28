@@ -39,6 +39,11 @@
         
     }
 
+    @media only screen and (max-width: $bp-small) {
+        grid-template-rows: repeat(4, max-content);
+        
+    }
+
 
     &:before {
         pointer-events: none;
@@ -110,6 +115,12 @@
             align-items: center;
             
             position: relative;
+
+
+            @media only screen and (max-width: $bp-small) {
+                max-width: 50rem;
+            }
+            
               
 
             &--icon {
@@ -166,6 +177,10 @@
 
             &--change {
                 margin-right: 5rem;
+
+                @media only screen and (max-width: $bp-small) {
+                    margin-right: 3.5rem;
+                }
             }
 
             &--map {
@@ -194,6 +209,12 @@
             margin: 5rem 0; 
         }
 
+        @media only screen and (max-width: $bp-small) {
+            grid-row: 4 / 5;
+
+            
+        }
+
         &--page {
             display: flex;
             flex-direction: row-reverse;
@@ -201,10 +222,18 @@
 
             & .btn:first-child {
                 margin-left: 1rem;
+
             }
 
             @media only screen and (max-width: $bp-medium) {
                 padding-right: 5rem; 
+            }
+
+            @media only screen and (max-width: $bp-small) {
+                justify-content: center;
+                padding-right: 0; 
+                margin-bottom: 5rem;
+
             }
 
         }
@@ -218,12 +247,39 @@
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
             }
+
+            @media only screen and (max-width: $bp-small) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @media only screen and (max-width: $bp-small) {
+                grid-template-columns: repeat(1, 1fr);
+
+            }
         }
 
         &--day {
             display: flex;
             flex-direction: column;
             align-items: center;
+
+            @media only screen and (max-width: $bp-small) {
+                padding: 2rem;
+                position: relative;
+
+                &:before {
+                    content : "";
+                    position: absolute;
+                    left    : 50%;
+                    bottom  : 0%;
+                    height  : 0.05rem;
+                    width   : 35%;
+                    border-bottom: 0.5rem solid $color-white; 
+                    transform: translate(-50%, 0);
+                }  
+            }
+
+            
 
             &--time {
                 font-size: 3rem;
@@ -274,7 +330,7 @@
             grid-column: col-start 1 / col-end 1;
             grid-row: 2 / 3;
 
-            margin: auto;
+            margin: 5rem auto;
 
             max-width: auto;
             width: 100%;
@@ -285,6 +341,26 @@
             text-align: center;
             
         }
+
+        @media only screen and (max-width: $bp-small) {
+            grid-column: col-start 1 / col-end 2;
+            
+            margin: 2rem auto 0 auto;
+            padding: 2rem;
+            position: relative;
+
+            &:before {
+                content : "";
+                position: absolute;
+                left    : 50%;
+                bottom  : 0%;
+                height  : 0.05rem;
+                width   : 120%;
+                border-bottom: 0.5rem solid $color-white; 
+                transform: translate(-50%, 0);
+            }  
+        }
+
 
         &--icon {
             font-size: 5rem;    
@@ -326,10 +402,9 @@
             grid-column: col-start 2 / col-end 2;
             grid-row: 2 / 3;
 
-            margin-right: 0rem;
 
             max-width: auto;
-            margin: auto;
+            margin: 5rem auto;
             width: 100%;
 
             
@@ -338,6 +413,27 @@
 
             text-align: center;
             
+        }
+
+        @media only screen and (max-width: $bp-small) {
+            grid-column: col-start 1 / col-end 2;
+            grid-row: 3 / 4;
+            
+
+            margin: 2rem auto 0 auto;
+            padding: 2rem;
+            position: relative;
+
+            &:before {
+                content : "";
+                position: absolute;
+                left    : 50%;
+                bottom  : 0%;
+                height  : 0.05rem;
+                width   : 120%;
+                border-bottom: 0.5rem solid $color-white; 
+                transform: translate(-50%, 0);
+            }  
         }
 
 

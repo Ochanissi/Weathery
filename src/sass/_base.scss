@@ -31,8 +31,8 @@ $bp-largest: 93.75em; // 1500px
 $bp-large: 75em; // 1200px
 $bp-medium: 50em; // 800px
 $bp-small: 43.75em; // 700px
-$bp-smallest: 31.25em; // 500px
-$bp-phone: 25em; // 400px
+$bp-smallest: 37.5em; // 600px
+$bp-phone: 28.125em; // 450px
 
 
 *,
@@ -51,9 +51,9 @@ html {
         font-size: 50%;
     }
 
-    // @media only screen and (max-width: $bp-phone) {
-    //     font-size: 40%;
-    // }
+    @media only screen and (max-width: $bp-phone) {
+        font-size: 40%;
+    }
 }
 
 body {
