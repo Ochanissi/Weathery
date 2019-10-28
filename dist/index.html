@@ -5,82 +5,240 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="img/favicon.png">
     <title>Weathery &mdash; The most reliable weather app</title>
-    <link href="weather-icons.min.css" rel="stylesheet"><link href="bundle.css" rel="stylesheet"></head>
+    <link href="css/weather-icons.min.css" rel="stylesheet"><link href="bundle.css" rel="stylesheet"></head>
 </head>
 
 <body class="container">
     <header class="header" id="header">
         <div class="header__top">
-            <h2>Change Location</h2>
-            <form class="header__top--search">
-                <input type="text" class="search__field" placeholder="City">
-                <button class="btn">
-                    <span>Search</span>
+            <div class="header__top--title">
+                <div class="header__top--title--icon"><ion-icon name="pin"></ion-icon></div>
+                <h2>Change Location</h2>
+            </div>
+            <div class="header__top--forms">
+                <form class="header__top--search header__top--search-city mb-sm">
+                    <span class="header__top--search--icon"><ion-icon name="locate"></ion-icon></span>
+                    <input type="text" class="header__top--search--input header__top--search--input-location" placeholder="Location" required>
+                    <div class="header__top--search--btn">
+                        <button class="btn">
+                            <span>Search</span>
+                        </button>
+                    </div>       
+                </form>
+                <form class="header__top--search header__top--search-coords">
+                    <span class="header__top--search--icon"><ion-icon name="compass"></ion-icon></span>
+                    <input type="text" class="header__top--search--input header__top--search--input-latitude" placeholder="Latitude" required>
+                    <span class="header__top--search--icon"><ion-icon name="compass"></ion-icon></span>
+                    <input type="text" class="header__top--search--input header__top--search--input-longitude" placeholder="Longitude" required>
+                    <div class="header__top--search--btn">
+                        <button class="btn">
+                            <span>Search</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="header__top--btns">
+                <div class="header__top--btns--change">
+                    <button class="btn">
+                        <span>Change Units</span>
+                    </button>
+                </div>
+                <div class="header__top--btns--map">
+                    <a class="btn btn-map" href="#map-header">
+                        <span>Pinpoint on map</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="header__bottom"></ul>
+            <div class="header__bottom--page mb-sm">
+                <!-- <button class="btn">
+                    <span>Page 1</span>
                 </button>
-            </form>
-            <form class="header__top--search">
-                <input type="text" class="search__field" placeholder="Longitude" required>
-                <input type="text" class="search__field" placeholder="Latitude" required>
                 <button class="btn">
-                    <span>Search</span>
-                </button>
-            </form>
+                    <span>Page 2</span>
+                </button> -->
+            </div>
+            <ul class="header__bottom--days">
+                <!-- <li class="header__bottom--day">
+                    <div class="header__bottom--day--time">3PM</div>
+                    <div class="header__bottom--day--icon"><i class="wi wi-cloudy-windy"></i></div>
+                    <div class="header__bottom--day--summary">Mostly Cloudy</div>
+                    <div class="header__bottom--day--temp">28 &deg;C</div>
+                    <div class="header__bottom--day--rain">Chance of Rain: 0 %</div>
+                </li>
+                <li class="header__bottom--day">
+                    <div class="header__bottom--day--time">3PM</div>
+                    <div class="header__bottom--day--icon"><i class="wi wi-cloudy-windy"></i></div>
+                    <div class="header__bottom--day--summary">Mostly Cloudy</div>
+                    <div class="header__bottom--day--temp">28 &deg;C</div>
+                    <div class="header__bottom--day--rain">Chance of Rain: 0 %</div>
+                </li>
+                <li class="header__bottom--day">
+                    <div class="header__bottom--day--time">3PM</div>
+                    <div class="header__bottom--day--icon"><i class="wi wi-cloudy-windy"></i></div>
+                    <div class="header__bottom--day--summary">Mostly Cloudy</div>
+                    <div class="header__bottom--day--temp">28 &deg;C</div>
+                    <div class="header__bottom--day--rain">Chance of Rain: 0 %</div>
+                </li>
+                <li class="header__bottom--day">
+                    <div class="header__bottom--day--time">3PM</div>
+                    <div class="header__bottom--day--icon"><i class="wi wi-cloudy-windy"></i></div>
+                    <div class="header__bottom--day--summary">Mostly Cloudy</div>
+                    <div class="header__bottom--day--temp">28 &deg;C</div>
+                    <div class="header__bottom--day--rain">Chance of Rain: 0 %</div>
+                </li>
+                <li class="header__bottom--day">
+                    <div class="header__bottom--day--time">3PM</div>
+                    <div class="header__bottom--day--icon"><i class="wi wi-cloudy-windy"></i></div>
+                    <div class="header__bottom--day--summary">Mostly Cloudy</div>
+                    <div class="header__bottom--day--temp">28 &deg;C</div>
+                    <div class="header__bottom--day--rain">Chance of Rain: 0 %</div>
+                </li>
+            </ul> -->
         </div>
 
         <div class="header__left">
-            <div class="header__left--icon"><i class="wi wi-day-sunny"></i>ICON</div>
-            <div class="header__left--summary">FOG</div>
+            <!-- <div class="header__left--icon"><i class="wi wi-cloudy-windy"></i></div>
+            <div class="header__left--summary">Fog</div>
             <div class="header__left--city">Bucharest</div>
-            <div class="header__left--temp">28 C</div>
-            
+            <div class="header__left--temp">28 &deg;C</div> -->
         </div>
 
         <div class="header__right">
-            <div class="header__right--humidity">50 %</div>
-            <div class="header__right--air-pressure">1009.48 PS</div>
-            <div class="header__right--chance-of-rain">0 %</div>
-            <div class="header__right--wind-speed">1.4 km/h</div>
-        </div>
-
-        <div class="header__bottom">
-            <div class="header__bottom--day">
-                <div class="header__bottom--day--time">3PM</div>
-                <div class="header__bottom--day--temp">28 C</div>
-                <div class="header__bottom--day--feels">Feels like 30 C</div>
+            <div class="header__right--blocks">
+                    <!-- <div class="header__right--block">
+                        <span class="header__right--icon"><i class="wi wi-humidity"></i></span>
+                        <div class="header__right--content">
+                            <span class="header__right--content--title">Humidity</span>
+                            <span class="header__right--content--text">50 %</span>
+                    </div>
+                </div>
+                <div class="header__right--block">
+                    <span class="header__right--icon"><i class="wi wi-barometer"></i></span>
+                    <div class="header__right--content">
+                        <span class="header__right--content--title">Air Pressure</span>
+                        <span class="header__right--content--text">1009.483 PS</span>
+                    </div>
+                </div>
+                <div class="header__right--block">
+                    <span class="header__right--icon"><i class="wi wi-sleet"></i></span>
+                    <div class="header__right--content">
+                        <span class="header__right--content--title">Chance of Rain</span>
+                        <span class="header__right--content--text">0 %</span>
+                    </div>
+                </div>
+                <div class="header__right--block">
+                    <span class="header__right--icon"><i class="wi wi-strong-wind"></i></span>
+                    <div class="header__right--content">
+                        <span class="header__right--content--title">Wind Speed</span>
+                        <span class="header__right--content--text">1.4 km/h</span>
+                    </div>
+                </div> -->
             </div>
-
-            <div class="header__bottom--day">
-                <div class="header__bottom--day--time">3PM</div>
-                <div class="header__bottom--day--temp">28 C</div>
-                <div class="header__bottom--day--feels">Feels like 30 C</div>
-            </div>
-
-            <div class="header__bottom--day">
-                <div class="header__bottom--day--time">3PM</div>
-                <div class="header__bottom--day--temp">28 C</div>
-                <div class="header__bottom--day--feels">Feels like 30 C</div>
-            </div>
-
-            <div class="header__bottom--day">
-                <div class="header__bottom--day--time">3PM</div>
-                <div class="header__bottom--day--temp">28 C</div>
-                <div class="header__bottom--day--feels">Feels like 30 C</div>
-            </div>
-
-            <div class="header__bottom--day">
-                <div class="header__bottom--day--time">3PM</div>
-                <div class="header__bottom--day--temp">28 C</div>
-                <div class="header__bottom--day--feels">Feels like 30 C</div>
-            </div>
-
-
         </div>
 
     </header>
 
+    <section class="daily" id="daily">
+        <div class="daily__title">
+            <!-- <h3 class="heading-3">8-Day Weather Forecast</h3>   -->
+        </div>
+        <div class="daily__summary">
+            <!-- <p class="daily__summary--text daily__summary--text-1">Be prepared with the most accurate 8-day forecast for with highs, lows, chance of precipitation from Weathery!</p> -->
+            <!-- <p class="daily__summary--text daily__summary--text-2"></p> -->
+        </div>
+        <div class="daily__days">
+            <!-- <article class="weather-card">
+                <div class="weather-card__image-section">
+                    <span class="weather-card__image-section--date">Monday | June 28</span>
+                    <div class="weather-card__image-section--icon"><i class="wi wi-day-sunny"></i></div>
+                    <div class="weather-card__image-section--humidity">
+                        <i class="wi wi-humidity"></i>
+                        <div class="weather-card__image-section--humidity--text">50%</div>
+                    </div>
+                    <div class="weather-card__image-section--wind">
+                        <i class="wi wi-strong-wind"></i>
+                        <div class="weather-card__image-section--wind--text">1.67 km/h</div>
+                    </div>
+                </div>
+                <div class="weather-card__info-section">
+                    <div class="weather-card__info-section--wave"></div>
+                    <div class="weather-card__info-section--layer-1"></div>
+                    <div class="weather-card__info-section--layer-2"></div>
+                    <div class="weather-card__info-section--layer-3"></div>
+                    <div class="weather-card__info-section--contents">
+                        <span class="weather-card__info-section--contents--temperature">19 &deg;C</span>
+                        <span class="weather-card__info-section--contents--summary">Rain until morning, starting again in the evening.</span>
+                        <span class="weather-card__info-section--contents--rain-chance">Chance of rain: 50 %</span>
+                        <div class="weather-card__info-section--contents--min-max">
+                            <span class="weather-card__info-section--contents--min">Min: 5 &deg;C</span>     
+                            <span class="weather-card__info-section--contents--between"> | </span>  
+                            <span class="weather-card__info-section--contents--max">Max: 25 &deg;C</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article> -->
+    </section>
+
+    <div class="map" id="map-header">
+        <div class="map__title">
+            <h3 class="heading-3">Pinpoint on map</h3>  
+        </div>
+        <div class="map__summary">
+            <p class="map__summary--text map__summary--text-1">Access current weather data for any location on Earth including over 200,000 cities!</p>
+            <p class="map__summary--text map__summary--text-2">Current weather is frequently updated based on global models and data from more than 40,000 weather stations.</p>
+        </div>
+        <div class="map__api" id="map">
+
+        </div>
+
+        <!-- <div class="map__infoWindow">
+            <div class="map__infoWindow--icon"><i class="wi wi-cloudy-windy"></i></div>
+            <div class="map__infoWindow--summary">Fog</div>
+            <div class="map__infoWindow--city">Unnamed Road, Voluntari 077190, Romania</div>
+            <div class="map__infoWindow--temp">28 &deg;C</div>
+        </div> -->
+    </div>
+    
+    <div class="footer">
+        <div class="footer__title">
+            <a class="footer__title--icon" href="#header"><i class="wi wi-day-cloudy"></i></a>
+            <h1 class="footer__title--header">Weathery</h1>
+        </div>
+        <div class="footer__content">
+            <div class="footer__content--navigation">
+                <ul class="footer__content--navigation--list">
+                    <li class="footer__content--navigation--list--item"><a href="https://github.com/Ochanissi/" target="_blank" class="footer__content--navigation--list--item--link">Terms of Service</a></li>
+                    <li class="footer__content--navigation--list--item"><a href="https://github.com/Ochanissi/" target="_blank" class="footer__content--navigation--list--item--link">Help</a></li>
+                    <li class="footer__content--navigation--list--item"><a href="https://github.com/Ochanissi/" target="_blank" class="footer__content--navigation--list--item--link">About</a></li>
+                    <li class="footer__content--navigation--list--item"><a href="https://github.com/Ochanissi/" target="_blank" class="footer__content--navigation--list--item--link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer__content--copyright">
+                Built by <span class="footer__copyright--name"><a href="https://github.com/Ochanissi/" target="_blank" class="footer__copyright--link">Mirel Bițoi</a></span>. <span class="footer__copyright--rights">All rights reserved.</span></br></span> Powered by <span class="footer__copyright--name"><a href="https://darksky.net/poweredby/" target="_blank" class="footer__copyright--link-secondary">Dark Sky</a></span> and <span class="footer__copyright--name"><a href="https://cloud.google.com/maps-platform/" target="_blank" class="footer__copyright--link-secondary">Google Maps</a></span>.
+            </div>
+        </div>
+        <div class="footer__copyright">
+            Copyright &copy; 2019 <span class="footer__copyright--name"><a href="https://github.com/Ochanissi/" target="_blank" class="footer__copyright--link">Mirel Bițoi</a></span>. <span class="footer__copyright--rights">All rights reserved.</span>
+        </div>
+    </div>
+
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOejuIMnoif-vg-a7KaoEyEXaLrS1yidQ"></script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="js/smooth-scroll.polyfills.min.js"></script>
+    <script>
+        var scroll = new SmoothScroll('a[href*="#"]', {
+            speed: 800,
+            speedAsDuration: true
+        });
+    </script>
 <script type="text/javascript" src="bundle.js"></script></body>
 
 </html>
