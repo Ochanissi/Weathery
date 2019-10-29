@@ -15,7 +15,7 @@ export default class ReverseGeocode {
             this.resLocation = res.data.results[0].formatted_address;
             this.resCoords = res.data.results[0].geometry.location;
 
-            console.log(res);
+            // console.log(res);
             // console.log(this.resLocation);
             // console.log(this.resLocationCity);
             // console.log(this.resLocationCountry);

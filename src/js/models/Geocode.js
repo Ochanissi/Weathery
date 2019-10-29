@@ -14,11 +14,11 @@ export default class Geocode {
             this.resLocation = res.data.results[0].formatted_address;
             this.resCoords = res.data.results[0].geometry.location;
 
-            console.log(res);
-            console.log(this.resLocation);
-            console.log(this.resLocationCity);
-            console.log(this.resLocationCountry);
-            console.log(this.resCoords);
+            // console.log(res);
+            // console.log(this.resLocation);
+            // console.log(this.resLocationCity);
+            // console.log(this.resLocationCountry);
+            // console.log(this.resCoords);
 
         } catch (error) {
             alert(error);

@@ -10,14 +10,15 @@ export default class Search {
     async getResults() {
         try {
             const res = await axios(`${proxy}https://api.darksky.net/forecast/${keyDarkSky}/${this.query_lat},${this.query_long}?units=si&exclude=minutely,flags,alerts`);
-            console.log(res);
             this.result = res.data;
-            // console.log(this.result);
             this.currently = res.data.currently;
-            // console.log(this.result.currently);
             this.hourly = res.data.hourly.data;
-            // console.log(this.result.hourly.data);
             this.daily = res.data.daily.data;
+            
+            console.log(res);
+            // console.log(this.result);
+            // console.log(this.result.currently);
+            // console.log(this.result.hourly.data);
             // console.log(this.result.daily.data);
         } catch (error) {
             alert(error);
@@ -32,12 +33,8 @@ export default class Search {
             this.hourly.forEach(x => {
                 x.temperature = x.temperature *  1.8 + 32;
             });
-            // console.log(this.hourly[0].temperature);
 
             this.currently.windSpeed *= 0.62137;
-
-
-            // console.log('1          ' + this.daily[0].windSpeed);
             
             this.daily.forEach(x => {
                 x.windSpeed *= 0.62137;
@@ -54,14 +51,8 @@ export default class Search {
             this.hourly.forEach(x => {
                 x.temperature = (x.temperature - 32) / 1.8;
             });
-            // console.log(this.hourly[0].temperature);
 
             this.currently.windSpeed /= 0.62137;
-
-
-
-            // console.log('2          ' + this.daily[0].windSpeed);
-
 
             this.daily.forEach(x => {
                 x.windSpeed /= 0.62137;
@@ -69,8 +60,6 @@ export default class Search {
                 x.temperatureHigh = (x.temperatureHigh - 32) / 1.8;
                 x.temperatureLow = (x.temperatureLow - 32) / 1.8;
             });
-
         }
-
     }
 }

@@ -3,13 +3,10 @@ import Geocode from './models/Geocode';
 import ReverseGeocode from './models/ReverseGeocode';
 import * as Maps from './models/Maps';
 import * as searchView from './views/searchView';
-import * as geocodeView from './views/geocodeView';
 import { elements, renderLoader, clearLoader } from './views/base';
 
+
 // Global state of the app
-// - Search object
-// - Current recipe object
-// - Liked recipes
 const state = {};
 // console.log(state);
 
@@ -31,7 +28,7 @@ export const controlSearch = async (lat, lng) => {
 
     // query_lat = '42.3601'; // TODO 
     // query_long = '-71.0589'; // TODO 
-    console.log(query_lat, query_long);
+    // console.log(query_lat, query_long);
 
     if (query_lat && query_long || lat && lng) {
         // 2. New search object and add to state
@@ -40,7 +37,6 @@ export const controlSearch = async (lat, lng) => {
 
         // 3. Prepare UI for results
         searchView.clearInput();
-        geocodeView.clearInput();
         searchView.clearResults();
         searchView.clearResList();
         searchView.clearResDaily();
@@ -49,9 +45,6 @@ export const controlSearch = async (lat, lng) => {
         // 4. Search for recipes
         await state.search.getResults();
         await state.reverseGeocode.getResults();
-
-
-
 
         // 5. Render results on UI
         [elements.searchResList, elements.searchResLeft, elements.searchResRight, elements.searchResDaily].forEach(event => clearLoader(event));
@@ -62,8 +55,6 @@ export const controlSearch = async (lat, lng) => {
         searchView.renderDailyHeader(state.search.result);
 
         Maps.addMarker({lat: parseFloat(state.search.query_lat), lng: parseFloat(state.search.query_long)}, state.search.result, state.reverseGeocode.resLocation);
-
-
     }
 }
 
@@ -84,7 +75,7 @@ elements.searchResPages.addEventListener('click', e => {
     
 });
 
-// Handling recipe button clicks
+// Handling the change button clicks
 state.clicked = false;
 elements.changeUnits.addEventListener('click', e => {
     const btn = e.target.closest('.btn');
@@ -105,7 +96,7 @@ elements.changeUnits.addEventListener('click', e => {
 const controlGeocode = async () => {
     // 1. Get the query from the view
     // const query_city = 'Bucharest'; // TODO 
-    const query_city = geocodeView.getInput_location();
+    const query_city = searchView.getInput_location();
 
     if (query_city) {
         // 2. New search object and add to state
@@ -113,7 +104,7 @@ const controlGeocode = async () => {
 
         // 3. Prepare UI for results
         searchView.clearInput();
-        geocodeView.clearInput();
+        searchView.clearInput();
         searchView.clearResults();
         searchView.clearResList();
         searchView.clearResDaily();
@@ -127,7 +118,6 @@ const controlGeocode = async () => {
 
         await state.search.getResults();
 
-
         // 5. Render results on UI
         [elements.searchResList, elements.searchResLeft, elements.searchResRight, elements.searchResDaily].forEach(event => clearLoader(event));
         searchView.renderBackgroundImage(state.search.result);
@@ -137,7 +127,6 @@ const controlGeocode = async () => {
         searchView.renderDailyHeader(state.search.result);
 
         Maps.addMarker({lat: parseFloat(state.search.query_lat), lng: parseFloat(state.search.query_long)});
-
     }
 }
 
