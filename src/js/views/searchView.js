@@ -78,7 +78,7 @@ export const renderBackgroundImage = result => {
   getIcons(result.currently);
 
   header.style.backgroundImage = `
-        url(/dist/img/background--${result.currently.icon}.jpg)
+        url(/Weathery/dist/img/background--${result.currently.icon}.jpg)
     `;
 };
 
@@ -224,7 +224,7 @@ const renderDailyBackground = daily => {
   document.querySelector(
     `.weather-card__image-section--${daily.icon}`
   ).style.backgroundImage = `
-        url(/dist/img/background--${daily.icon}.jpg)
+        url(/Weathery/dist/img/background--${daily.icon}.jpg)
     `;
 };
 
