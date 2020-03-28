@@ -2,10 +2,12 @@ import { elements } from './base';
 
 export const getInput_lat = () => elements.searchInput_lat.value;
 export const getInput_long = () => elements.searchInput_long.value;
+export const getInput_location = () => elements.searchInput_location.value;
 
 export const clearInput = () => {
     elements.searchInput_lat.value = '';
     elements.searchInput_long.value = '';
+    elements.searchInput_location.value = '';
 };
 
 export const clearResults = () => {
@@ -90,8 +92,8 @@ export const renderCurrently = (result, location) => {
         formattedLocation = formattedLocation.slice(-2).join(" ");
     }
 
-    console.log(location);
-    console.log(formattedLocation);
+    // console.log(location);
+    // console.log(formattedLocation);
 
     const markupLeft = `
         <div class="header__left--icon"><i class="wi ${result.currently.icon}"></i></div>
@@ -142,7 +144,7 @@ const renderHourly = (hourly, bool) => {
     const mins = "0" + date.getMinutes();
     const secs = "0" + date.getSeconds();
 
-    console.log('temp ' + hourly.temperature);
+    // console.log('temp ' + hourly.temperature);
     // console.log('precip ' + hourly.precipProbability * 100);
     // ${Math.round(hourly.temperature)}
 
@@ -307,7 +309,6 @@ export const updateUnits = (result, hourly, daily, bool, page = 1, resPerPage = 
 
 
     document.querySelector('.header__left--temp').textContent = `${Math.round(result.currently.temperature)} °${bool ? 'F' : 'C'}`;
-
 
     document.querySelector('.header__right--content--text--speed').textContent = `${result.currently.windSpeed.toFixed(2)} ${bool ? 'mi' : 'km'}/h`;
 }

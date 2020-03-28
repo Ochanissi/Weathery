@@ -42,11 +42,8 @@ export const addMarker = (coords, result, location) => {
     // console.log(coords);
 };
 
-// ----------------------------
-
 const infoWindow = new google.maps.InfoWindow();
 const infoWindowHome = new google.maps.InfoWindow();
-
 
 
 if(navigator.geolocation) {
@@ -78,8 +75,3 @@ const handleLocationError = (content, position) => {
     infoWindow.open(map);
 
 }
-
-// console.log(navigator.geolocation.position);
-// export const getInput_lat = lat => lat;
-// export const getInput_long = lng => lng;
-
