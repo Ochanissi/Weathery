@@ -4,12 +4,13 @@
   "description": "Weathery Project",
   "main": "index.js",
   "scripts": {
+    "start": "node app.js",
     "watch:sass": "node-sass sass/main.scss css/style.css -w",
     "devserver": "live-server --browser=chrome",
     "live-start": "npm-run-all --parallel devserver watch:sass",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development"
+    "start:dev": "webpack-dev-server --mode development"
   },
   "author": "Mirel Bitoi",
   "license": "ISC",
