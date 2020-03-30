@@ -1,73 +1,73 @@
-import { elements } from "./base";
+import { elements } from './base';
 
 export const getInput_lat = () => elements.searchInput_lat.value;
 export const getInput_long = () => elements.searchInput_long.value;
 export const getInput_location = () => elements.searchInput_location.value;
 
 export const clearInput = () => {
-  elements.searchInput_lat.value = "";
-  elements.searchInput_long.value = "";
-  elements.searchInput_location.value = "";
+  elements.searchInput_lat.value = '';
+  elements.searchInput_long.value = '';
+  elements.searchInput_location.value = '';
 };
 
 export const clearResults = () => {
-  elements.searchResList.innerHTML = "";
-  elements.searchResPages.innerHTML = "";
-  elements.searchResLeft.innerHTML = "";
-  elements.searchResRight.innerHTML = "";
+  elements.searchResList.innerHTML = '';
+  elements.searchResPages.innerHTML = '';
+  elements.searchResLeft.innerHTML = '';
+  elements.searchResRight.innerHTML = '';
 };
 
 export const clearResList = () => {
-  elements.searchResList.innerHTML = "";
-  elements.searchResPages.innerHTML = "";
+  elements.searchResList.innerHTML = '';
+  elements.searchResPages.innerHTML = '';
 };
 
 export const clearResDaily = () => {
-  elements.searchResDaily.innerHTML = "";
-  elements.searchDailyTitle.innerHTML = "";
-  elements.searchDailySummary.innerHTML = "";
+  elements.searchResDaily.innerHTML = '';
+  elements.searchDailyTitle.innerHTML = '';
+  elements.searchDailySummary.innerHTML = '';
 };
 
 const getIcons = data => {
   switch (data.icon) {
-    case "clear-day":
-      data.icon = "wi-day-sunny";
+    case 'clear-day':
+      data.icon = 'wi-day-sunny';
       break;
-    case "clear-night":
-      data.icon = "wi-night-clear";
+    case 'clear-night':
+      data.icon = 'wi-night-clear';
       break;
-    case "rain":
-      data.icon = "wi-rain";
+    case 'rain':
+      data.icon = 'wi-rain';
       break;
-    case "snow":
-      data.icon = "wi-snow";
+    case 'snow':
+      data.icon = 'wi-snow';
       break;
-    case "sleet":
-      data.icon = "wi-sleet";
+    case 'sleet':
+      data.icon = 'wi-sleet';
       break;
-    case "wind":
-      data.icon = "wi-cloudy-windy";
+    case 'wind':
+      data.icon = 'wi-cloudy-windy';
       break;
-    case "fog":
-      data.icon = "wi-fog";
+    case 'fog':
+      data.icon = 'wi-fog';
       break;
-    case "cloudy":
-      data.icon = "wi-cloudy";
+    case 'cloudy':
+      data.icon = 'wi-cloudy';
       break;
-    case "partly-cloudy-day":
-      data.icon = "wi-day-cloudy";
+    case 'partly-cloudy-day':
+      data.icon = 'wi-day-cloudy';
       break;
-    case "partly-cloudy-night":
-      data.icon = "wi-night-alt-cloudy";
+    case 'partly-cloudy-night':
+      data.icon = 'wi-night-alt-cloudy';
       break;
-    case "hail":
-      data.icon = "wi-hail";
+    case 'hail':
+      data.icon = 'wi-hail';
       break;
-    case "thunderstorm":
-      data.icon = "wi-thunderstorm";
+    case 'thunderstorm':
+      data.icon = 'wi-thunderstorm';
       break;
-    case "tornado":
-      data.icon = "wi-tornado";
+    case 'tornado':
+      data.icon = 'wi-tornado';
       break;
     // default:
     //     data.icon = 'wi-cloud';
@@ -78,17 +78,17 @@ export const renderBackgroundImage = result => {
   getIcons(result.currently);
 
   header.style.backgroundImage = `
-        url(/Weathery/dist/img/background--${result.currently.icon}.jpg)
+        url(/img/background--${result.currently.icon}.jpg)
     `;
 };
 
 export const renderCurrently = (result, location) => {
-  let formattedLocation = location.replace(/[0-9]|^ /gi, "").split(", ");
+  let formattedLocation = location.replace(/[0-9]|^ /gi, '').split(', ');
 
   if (formattedLocation[formattedLocation.length - 1].length < 1) {
-    formattedLocation = formattedLocation.slice(-3).join(" ");
+    formattedLocation = formattedLocation.slice(-3).join(' ');
   } else {
-    formattedLocation = formattedLocation.slice(-2).join(" ");
+    formattedLocation = formattedLocation.slice(-2).join(' ');
   }
 
   // console.log(location);
@@ -104,7 +104,7 @@ export const renderCurrently = (result, location) => {
           result.currently.temperature
         )} &deg;C</div>
     `;
-  elements.searchResLeft.insertAdjacentHTML("afterbegin", markupLeft);
+  elements.searchResLeft.insertAdjacentHTML('afterbegin', markupLeft);
 
   const markupRight = `
         <div class="header__right--block">
@@ -144,7 +144,7 @@ export const renderCurrently = (result, location) => {
             </div>
         </div>
     `;
-  elements.searchResRight.insertAdjacentHTML("afterbegin", markupRight);
+  elements.searchResRight.insertAdjacentHTML('afterbegin', markupRight);
 };
 
 const renderHourly = (hourly, bool) => {
@@ -152,8 +152,8 @@ const renderHourly = (hourly, bool) => {
 
   const date = new Date(hourly.time * 1000);
   const hours = date.getHours();
-  const mins = "0" + date.getMinutes();
-  const secs = "0" + date.getSeconds();
+  const mins = '0' + date.getMinutes();
+  const secs = '0' + date.getSeconds();
 
   // console.log('temp ' + hourly.temperature);
   // console.log('precip ' + hourly.precipProbability * 100);
@@ -176,35 +176,35 @@ const renderHourly = (hourly, bool) => {
             )} %</div>
         </li>
     `;
-  elements.searchResList.insertAdjacentHTML("beforeend", markup);
+  elements.searchResList.insertAdjacentHTML('beforeend', markup);
 };
 
 // type: 'prev' or 'next'
 const createButton = (page, type) => `
-    <button class="btn" data-goto=${type === "prev" ? page - 1 : page + 1}>
-        <span>Page ${type === "prev" ? page - 1 : page + 1}</span>
+    <button class="btn" data-goto=${type === 'prev' ? page - 1 : page + 1}>
+        <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
     </button>
 `;
 
 const renderButtons = (page, numResults, resPerPage) => {
   const pages = Math.ceil(numResults / resPerPage);
-  let button = createButton(page, "next");
+  let button = createButton(page, 'next');
 
   if (page === 1 && pages > 1) {
     // Only button to go to next page
-    button = createButton(page, "next");
+    button = createButton(page, 'next');
   } else if (page < pages) {
     // Both buttons
     button = `
-            ${createButton(page, "next")}
-            ${createButton(page, "prev")}
+            ${createButton(page, 'next')}
+            ${createButton(page, 'prev')}
         `;
   } else if (page === pages && pages > 1) {
     // Only button to go to previous page
-    button = createButton(page, "prev");
+    button = createButton(page, 'prev');
   }
 
-  elements.searchResPages.insertAdjacentHTML("beforeend", button);
+  elements.searchResPages.insertAdjacentHTML('beforeend', button);
 };
 
 export const renderResHourly = (hourly, page = 1, resPerPage = 5) => {
@@ -224,7 +224,7 @@ const renderDailyBackground = daily => {
   document.querySelector(
     `.weather-card__image-section--${daily.icon}`
   ).style.backgroundImage = `
-        url(/Weathery/dist/img/background--${daily.icon}.jpg)
+        url(/img/background--${daily.icon}.jpg)
     `;
 };
 
@@ -238,8 +238,8 @@ export const renderDailyHeader = result => {
         <p class="daily__summary--text daily__summary--text-2">${result.daily.summary}</p>
     `;
 
-  elements.searchDailyTitle.insertAdjacentHTML("afterbegin", markupTitle);
-  elements.searchDailySummary.insertAdjacentHTML("beforeend", markupSummary);
+  elements.searchDailyTitle.insertAdjacentHTML('afterbegin', markupTitle);
+  elements.searchDailySummary.insertAdjacentHTML('beforeend', markupSummary);
 };
 
 const renderDaily = daily => {
@@ -247,10 +247,10 @@ const renderDaily = daily => {
 
   const date = new Date(daily.time * 1000);
   const hours = date.getHours();
-  const mins = "0" + date.getMinutes();
-  const secs = "0" + date.getSeconds();
+  const mins = '0' + date.getMinutes();
+  const secs = '0' + date.getSeconds();
 
-  const time = date.toString().split(" ");
+  const time = date.toString().split(' ');
 
   const markup = `
         <article class="weather-card">
@@ -259,7 +259,7 @@ const renderDaily = daily => {
             }">
                 <span class="weather-card__image-section--date">${
                   time[0]
-                } | ${time[1] + " " + time[2]}</span>
+                } | ${time[1] + ' ' + time[2]}</span>
                 <div class="weather-card__image-section--icon"><i class="wi ${
                   daily.icon
                 }"></i></div>
@@ -306,7 +306,7 @@ const renderDaily = daily => {
         </article>
     `;
 
-  elements.searchResDaily.insertAdjacentHTML("beforeend", markup);
+  elements.searchResDaily.insertAdjacentHTML('beforeend', markup);
 };
 
 export const renderResDaily = daily => {
@@ -324,50 +324,50 @@ export const updateUnits = (
 ) => {
   const start = (page - 1) * resPerPage;
   const end = page * resPerPage;
-  const classes = document.getElementsByClassName("header__bottom--day--temp");
+  const classes = document.getElementsByClassName('header__bottom--day--temp');
   const dailyWind = document.getElementsByClassName(
-    "weather-card__image-section--wind--text"
+    'weather-card__image-section--wind--text'
   );
   const dailyTemp = document.getElementsByClassName(
-    "weather-card__info-section--contents--temperature"
+    'weather-card__info-section--contents--temperature'
   );
   const dailyTempMin = document.getElementsByClassName(
-    "weather-card__info-section--contents--min"
+    'weather-card__info-section--contents--min'
   );
   const dailyTempMax = document.getElementsByClassName(
-    "weather-card__info-section--contents--max"
+    'weather-card__info-section--contents--max'
   );
 
   hourly.slice(start, end).forEach((x, i) => {
     classes[i].textContent = `${Math.round(x.temperature)} °${
-      bool ? "F" : "C"
+      bool ? 'F' : 'C'
     }`;
   });
 
   daily.slice(0, daily.length).forEach((x, i) => {
     dailyWind[i].textContent = `${x.windSpeed.toFixed(2)} ${
-      bool ? "mi" : "km"
+      bool ? 'mi' : 'km'
     }/h`;
     dailyTemp[i].textContent = `${Math.round(
       (x.temperatureHigh + x.temperatureLow) / 2
-    )} °${bool ? "F" : "C"}`;
+    )} °${bool ? 'F' : 'C'}`;
     dailyTempMin[i].textContent = `Min: ${Math.round(x.temperatureHigh)} °${
-      bool ? "F" : "C"
+      bool ? 'F' : 'C'
     }`;
     dailyTempMax[i].textContent = `Max: ${Math.round(x.temperatureHigh)} °${
-      bool ? "F" : "C"
+      bool ? 'F' : 'C'
     }`;
   });
 
   // console.log('kek ' + daily[0].windSpeed.toFixed(2)) ;
 
-  document.querySelector(".header__left--temp").textContent = `${Math.round(
+  document.querySelector('.header__left--temp').textContent = `${Math.round(
     result.currently.temperature
-  )} °${bool ? "F" : "C"}`;
+  )} °${bool ? 'F' : 'C'}`;
 
   document.querySelector(
-    ".header__right--content--text--speed"
+    '.header__right--content--text--speed'
   ).textContent = `${result.currently.windSpeed.toFixed(2)} ${
-    bool ? "mi" : "km"
+    bool ? 'mi' : 'km'
   }/h`;
 };
