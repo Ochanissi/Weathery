@@ -28,7 +28,7 @@ export const clearResDaily = () => {
   elements.searchDailySummary.innerHTML = '';
 };
 
-const getIcons = data => {
+const getIcons = (data) => {
   switch (data.icon) {
     case 'clear-day':
       data.icon = 'wi-day-sunny';
@@ -74,11 +74,11 @@ const getIcons = data => {
   }
 };
 
-export const renderBackgroundImage = result => {
+export const renderBackgroundImage = (result) => {
   getIcons(result.currently);
 
   header.style.backgroundImage = `
-        url(/img/background--${result.currently.icon}.jpg)
+        url(./img/background--${result.currently.icon}.jpg)
     `;
 };
 
@@ -218,17 +218,17 @@ export const renderResHourly = (hourly, page = 1, resPerPage = 5) => {
   renderButtons(page, hourly.length, resPerPage);
 };
 
-const renderDailyBackground = daily => {
+const renderDailyBackground = (daily) => {
   getIcons(daily);
 
   document.querySelector(
     `.weather-card__image-section--${daily.icon}`
   ).style.backgroundImage = `
-        url(/img/background--${daily.icon}.jpg)
+        url(./img/background--${daily.icon}.jpg)
     `;
 };
 
-export const renderDailyHeader = result => {
+export const renderDailyHeader = (result) => {
   const markupTitle = `
         <h3 class="heading-3">8-Day Weather Forecast</h3>
     `;
@@ -242,7 +242,7 @@ export const renderDailyHeader = result => {
   elements.searchDailySummary.insertAdjacentHTML('beforeend', markupSummary);
 };
 
-const renderDaily = daily => {
+const renderDaily = (daily) => {
   getIcons(daily);
 
   const date = new Date(daily.time * 1000);
@@ -257,9 +257,9 @@ const renderDaily = daily => {
             <div class="weather-card__image-section weather-card__image-section--${
               daily.icon
             }">
-                <span class="weather-card__image-section--date">${
-                  time[0]
-                } | ${time[1] + ' ' + time[2]}</span>
+                <span class="weather-card__image-section--date">${time[0]} | ${
+    time[1] + ' ' + time[2]
+  }</span>
                 <div class="weather-card__image-section--icon"><i class="wi ${
                   daily.icon
                 }"></i></div>
@@ -309,7 +309,7 @@ const renderDaily = daily => {
   elements.searchResDaily.insertAdjacentHTML('beforeend', markup);
 };
 
-export const renderResDaily = daily => {
+export const renderResDaily = (daily) => {
   daily.slice(0, daily.length).forEach(renderDaily);
   daily.slice(0, daily.length).forEach(renderDailyBackground);
 };
