@@ -1,9 +1,9 @@
 // COLOR VARIABLES
-$color-primary: #04C2C9;
-$color-primary-dark: #00A1A7;
+$color-primary: #04c2c9;
+$color-primary-dark: #00a1a7;
 
-$color-secondary: #E31B6D;
-$color-secondary-dark: #BA265D;
+$color-secondary: #e31b6d;
+$color-secondary-dark: #ba265d;
 $color-secondary-darker: #a32453;
 
 $color-tertiary-light: #2998ff;
@@ -17,7 +17,7 @@ $color-grey-dark-1: #999;
 $color-grey-dark-2: #777;
 $color-grey-dark-3: #333;
 $color-grey-dark-4: #252934;
-$color-grey-dark-5: #1B242F;
+$color-grey-dark-5: #1b242f;
 
 $color-white: #fff;
 $color-black: #000;
@@ -34,56 +34,52 @@ $bp-small: 43.75em; // 700px
 $bp-smallest: 37.5em; // 600px
 $bp-phone: 28.125em; // 450px
 
-
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
 
 html {
-    box-sizing: border-box;
-    font-size: 62.5%; // 10px / 16px = 62.5% => 1rem = 10px
+  box-sizing: border-box;
+  font-size: 62.5%; // 10px / 16px = 62.5% => 1rem = 10px
 
-    @media only screen and (max-width: $bp-largest) {
-        font-size: 50%;
-    }
+  @media only screen and (max-width: $bp-largest) {
+    font-size: 50%;
+  }
 
-    @media only screen and (max-width: $bp-phone) {
-        font-size: 40%;
-    }
+  @media only screen and (max-width: $bp-phone) {
+    font-size: 45%;
+  }
 }
 
 body {
-    font-family: $font-primary;
-    color: $color-black;
-    font-weight: 300;
-    line-height: 1.6;
+  font-family: $font-primary;
+  color: $color-black;
+  font-weight: 300;
+  line-height: 1.6;
 
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 .container {
-    display: grid;
-    grid-template-rows: 100vh repeat(3, min-content);
-    grid-template-columns: [full-start] minmax(max-content, 14rem) [center-start]
+  display: grid;
+  grid-template-rows: 100vh repeat(3, min-content);
+  grid-template-columns:
+    [full-start] minmax(max-content, 14rem) [center-start]
     minmax(6rem, 1fr)
     [col-start] minmax(max-content, 14rem) [col-end]
     minmax(6rem, 1fr)
     [center-end] minmax(max-content, 14rem) [full-end];
 
+  @media only screen and (max-width: $bp-medium) {
+    grid-template-rows: repeat(4, min-content);
+  }
 
-    @media only screen and (max-width: $bp-medium) {
-        grid-template-rows: repeat(4, min-content);
-
-    }
-
-    & > * {
-        // padding: 40px;
-        font-size: 1.75rem;
-    }
-
-    
+  & > * {
+    // padding: 40px;
+    font-size: 1.75rem;
+  }
 }

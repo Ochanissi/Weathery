@@ -1,271 +1,283 @@
-.daily  {
-    // background-color: greenyellow;
-    background-color: $color-white;
+.daily {
+  // background-color: greenyellow;
+  background-color: $color-white;
 
-    grid-column: full-start / full-end;
+  grid-column: full-start / full-end;
 
-    display: grid;
-    grid-template-rows: repeat(4, min-content);
-    grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end] ) [center-end] minmax(6rem, 1fr) [full-end];
+  display: grid;
+  grid-template-rows: repeat(4, min-content);
+  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(
+      8,
+      [col-start] minmax(min-content, 14rem) [col-end]
+    ) [center-end] minmax(6rem, 1fr) [full-end];
 
-    
-    justify-content: center;
-    align-content: center;
-    justify-items: center;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+
+  &__title {
+    grid-row: 1 / 2;
+    grid-column: center-start / center-end;
+
+    & h3 {
+      margin-top: 5rem;
+      margin-bottom: 5rem;
+    }
+  }
+
+  &__summary {
+    grid-row: 2 / 3;
+    grid-column: center-start / center-end;
+
+    display: flex;
+    flex-direction: column;
     align-items: center;
 
+    & p {
+      margin-bottom: 5rem;
+      font-size: 2rem;
+      font-weight: 500;
+      text-align: center;
+    }
+  }
 
-    &__title {
-        grid-row: 1 / 2;
-        grid-column: center-start / center-end;
+  &__days {
+    grid-row: 3 / 4;
+    grid-column: center-start / center-end;
 
-        & h3 {
-        margin-top: 5rem;
-        margin-bottom: 5rem;
-        }
+    // margin-bottom: 5rem;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    justify-content: center;
+    // align-content: center;
+    // justify-items: center;
+    // align-items: center;
+
+    text-align: center;
+
+    grid-gap: 5rem;
+    padding: 0 2rem;
+
+    @media only screen and (max-width: $bp-large) {
+      grid-template-columns: repeat(2, 1fr);
     }
 
-    &__summary {
-        grid-row: 2 / 3;
-        grid-column: center-start / center-end;
+    @media only screen and (max-width: $bp-small) {
+      grid-template-columns: repeat(1, 1fr);
+    }
 
+    .weather-card {
+      height: 45rem;
+      width: 30rem;
+      border-radius: 3rem;
+      box-shadow: 1.5rem 2rem 8.5rem $color-grey-dark-1;
+      overflow: hidden;
+
+      &__image-section {
+        height: 57%;
+        background-image: url(/img/background--wi-cloud.jpg);
+        transition: background-image 1s ease-in-out;
+
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+
+        position: relative;
+
+        &--wi-day-sunny {
+          background-image: url(/img/background--wi-day-sunny.jpg);
+        }
+        &--wi-rain {
+          background-image: url(/img/background--wi-rain.jpg);
+        }
+        &--wi-snow {
+          background-image: url(/img/background--wi-snow.jpg);
+        }
+        &--wi-sleet {
+          background-image: url(/img/background--wi-sleet.jpg);
+        }
+        &--wi-cloudy-windy {
+          background-image: url(/img/background--wi-cloudy-windy.jpg);
+        }
+        &--wi-fog {
+          background-image: url(/img/background--wi-fog.jpg);
+        }
+        &--wi-cloudy {
+          background-image: url(/img/background--wi-cloudy.jpg);
+        }
+        &--wi-day-cloudy {
+          background-image: url(/img/background--wi-day-cloudy.jpg);
+        }
+        &--wi-night-alt-cloudy {
+          background-image: url(/img/background--wi-night-alt-cloudy.jpg);
+        }
+        &--wi-hail {
+          background-image: url(/img/background--wi-hail.jpg);
+        }
+        &--wi-thunderstorm {
+          background-image: url(/img/background--wi-thunderstorm.jpg);
+        }
+        &--wi-tornado {
+          background-image: url(/img/background--wi-tornado.jpg);
+        }
+
+        &:before {
+          pointer-events: none;
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          left: 0;
+          bottom: 0;
+          background-image: linear-gradient(
+            to right bottom,
+            rgba($color-grey-dark-2, 0.5),
+            rgba($color-grey-dark-3, 0.5)
+          );
+        }
+
+        &--date {
+          padding-top: 0.5rem;
+          display: flex;
+          justify-content: center;
+          color: $color-white;
+          font-weight: 500;
+          position: relative;
+
+          z-index: 9999;
+        }
+
+        &--icon {
+          font-size: 3.5rem;
+          position: absolute;
+          top: 1.5rem;
+          right: 2rem;
+          display: inline-block;
+          color: $color-white;
+        }
+
+        &--humidity {
+          color: $color-white;
+          position: absolute;
+          bottom: 6rem;
+          left: 2rem;
+          z-index: 9;
+          font-weight: 500;
+
+          display: flex;
+          align-items: center;
+
+          &--text {
+            padding-left: 0.75rem;
+          }
+        }
+
+        &--wind {
+          color: $color-white;
+          position: absolute;
+          bottom: 6rem;
+          right: 2rem;
+          z-index: 9;
+          font-weight: 500;
+
+          display: flex;
+          align-items: center;
+
+          &--text {
+            padding-left: 0.75rem;
+          }
+        }
+      }
+
+      &__info-section {
+        height: 47%;
+        background: $color-white;
+        position: relative;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         align-items: center;
 
-        & p {
-            margin-bottom: 5rem;
-            font-size: 2rem;
+        &--layer-1 {
+          position: absolute;
+          height: 10rem;
+          width: 25rem;
+          border-radius: 100%;
+          background-color: rgba($color-grey-light-1, 0.5);
+          top: -40px;
+          left: -12rem;
+        }
+
+        &--layer-2 {
+          position: absolute;
+          height: 10rem;
+          width: 25rem;
+          border-radius: 100%;
+          background-color: rgba($color-grey-light-1, 0.5);
+          top: -5rem;
+          left: 16rem;
+        }
+
+        &--layer-3 {
+          position: absolute;
+          height: 5rem;
+          width: 20rem;
+          border-radius: 100%;
+          background-color: rgba($color-grey-light-1, 0.5);
+          top: -2.7rem;
+          left: 5rem;
+        }
+
+        &--wave {
+          position: absolute;
+          height: 3.1rem;
+          background-image: url(/img/card-background.png);
+          background-position: -11rem 0rem;
+          background-size: 100%;
+          width: 100%;
+          top: -3rem;
+          // background-color: white;
+          z-index: 99;
+          opacity: 100;
+        }
+
+        &--contents {
+          height: 100%;
+          top: -1.5rem;
+          position: absolute;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          justify-items: center;
+          align-items: center;
+          align-content: center;
+
+          text-align: center;
+
+          padding: 0 2rem;
+
+          &--temperature {
+            font-size: 5rem;
+            font-weight: 700;
+          }
+
+          &--summary {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+          }
+
+          &--rain-chance {
+            margin-bottom: 0.5rem;
+          }
+
+          &--min-max {
             font-weight: 500;
-            text-align: center;
+          }
         }
+      }
     }
-
-    &__days {
-        grid-row: 3 / 4;
-        grid-column: center-start / center-end;
-
-        // margin-bottom: 5rem;
-
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        
-        justify-content: center;
-        // align-content: center;
-        // justify-items: center;
-        // align-items: center;
-        
-        text-align: center;
-        
-        grid-gap: 5rem;
-        padding: 0 2rem;
-
-
-        @media only screen and (max-width: $bp-large) {
-            grid-template-columns: repeat(2, 1fr);
-   
-        }
-
-        @media only screen and (max-width: $bp-small) {
-            grid-template-columns: repeat(1, 1fr);
-   
-        }
-
-
-        .weather-card {
-            height: 45rem;
-            width: 30rem;
-            border-radius: 3rem;
-            box-shadow: 1.5rem 2rem 8.5rem $color-grey-dark-1;
-            overflow: hidden;
-
-            &__image-section {
-                height: 57%;
-                background-image: url(/img/background--wi-cloud.jpg);
-                transition: background-image 1s ease-in-out;
-
-                background-position: center;
-                background-size: cover;
-                width: 100%;
-            
-                position: relative;
-
-                &--wi-day-sunny {background-image: url(/img/background--wi-day-sunny.jpg);}
-                &--wi-rain {background-image: url(/img/background--wi-rain.jpg);}
-                &--wi-snow {background-image: url(/img/background--wi-snow.jpg);}
-                &--wi-sleet {background-image: url(/img/background--wi-sleet.jpg);}
-                &--wi-cloudy-windy {background-image: url(/img/background--wi-cloudy-windy.jpg);}
-                &--wi-fog {background-image: url(/img/background--wi-fog.jpg);}
-                &--wi-cloudy {background-image: url(/img/background--wi-cloudy.jpg);}
-                &--wi-day-cloudy {background-image: url(/img/background--wi-day-cloudy.jpg);}
-                &--wi-night-alt-cloudy {background-image: url(/img/background--wi-night-alt-cloudy.jpg);}
-                &--wi-hail {background-image: url(/img/background--wi-hail.jpg);}
-                &--wi-thunderstorm {background-image: url(/img/background--wi-thunderstorm.jpg);}
-                &--wi-tornado {background-image: url(/img/background--wi-tornado.jpg);}
-
-                &:before {
-                    pointer-events: none;
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    left: 0;
-                    bottom: 0;
-                    background-image: linear-gradient(
-                        to right bottom, 
-                        rgba($color-grey-dark-2, .5),
-                        rgba($color-grey-dark-3, .5));
-                }
-
-                &--date {
-                    padding-top: .5rem;
-                    display: flex;
-                    justify-content: center;
-                    color: $color-white;
-                    font-weight: 500;
-                    position: relative;
-                    
-                    z-index: 9999;
-                }
-
-                &--icon {
-                    font-size: 3.5rem;
-                    position: absolute;
-                    top: 1.5rem;
-                    right: 2rem;
-                    display: inline-block;
-                    color: $color-white;
-
-                }
-
-                &--humidity {
-                    color: $color-white;
-                    position: absolute;
-                    bottom: 6rem;
-                    left: 2rem;
-                    z-index: 9;
-                    font-weight: 500;
-
-                    display: flex;
-                    align-items: center;
-                    
-
-                    &--text {
-                        padding-left: .75rem;
-                    }
-
-                }
-
-                &--wind {
-                    color: $color-white;
-                    position: absolute;
-                    bottom: 6rem;
-                    right: 2rem;
-                    z-index: 9;
-                    font-weight: 500;
-
-                    display: flex;
-                    align-items: center;
-                    
-                    &--text {
-                        padding-left: .75rem;
-                    }
-
-
-                }
-            }
-
-            &__info-section {
-                height: 47%;
-                background: $color-white;
-                position: relative;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                &--layer-1 {
-                    position: absolute;
-                    height: 10rem;
-                    width: 25rem;
-                    border-radius: 100%;
-                    background-color: rgba($color-grey-light-1, 0.5);
-                    top: -40px;
-                    left: -12rem;
-                }
-
-                &--layer-2 {
-                    position: absolute;
-                    height: 10rem;
-                    width: 25rem;
-                    border-radius: 100%;
-                    background-color: rgba($color-grey-light-1, 0.5);
-                    top: -5rem;
-                    left: 16rem;
-                }
-
-                &--layer-3 {
-                    position: absolute;
-                    height: 5rem;
-                    width: 20rem;
-                    border-radius: 100%;
-                    background-color: rgba($color-grey-light-1, 0.5);
-                    top: -2.7rem;
-                    left: 5rem;
-                }
-
-                &--wave {
-                    position: absolute;
-                    height: 3.1rem;
-                    background-image: url(/img/card-background.png);
-                    background-position: -11rem 0rem;
-                    background-size: 100%;
-                    width: 100%;
-                    top: -3rem;
-                    // background-color: white;
-                    z-index: 99;
-                    opacity: 100;
-                }
-
-                &--contents {
-                    height: 100%;
-                    top: -1.5rem;
-                    position: absolute;
-
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    justify-items: center;
-                    align-items: center;
-                    align-content: center;
-
-                    text-align: center;
-
-
-                    padding: 0 2rem;
-
-                    &--temperature {
-                        font-size: 5rem;
-                        font-weight: 700;
-                    }
-
-                    &--summary {
-                        margin-bottom: .5rem;
-                        font-size: 1.5rem;
-                    }
-
-                    &--rain-chance {
-                        margin-bottom: .5rem;
-                    }
-
-                    &--min-max {
-                        font-weight: 500;
-
-                    }
-
-
-
-                }
-            }
-        }
-    }
+  }
 }
