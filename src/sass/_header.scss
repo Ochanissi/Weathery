@@ -132,6 +132,7 @@
       }
 
       &--input {
+        min-width: 0;
         width: 100%;
         border: 2px solid $color-grey-dark-1;
         border-radius: 4px;
